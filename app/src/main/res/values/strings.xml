@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MultiStepLogin</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="done">Done!</string>
+    <string name="multi_step_login">Multi-step Login</string>
+    <string name="basic_multi_step_login">Basic Multi-step Login</string>
+    <string name="multi_step_login_two_password_fields">Multi-step Login with Two Password Fields
+    </string>
+    <string name="submit">Submit</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="password_min_length">Password must be at least 3 chars in length</string>
+    <string name="multi_step_login_extra_screen">Multi-stel Login with an Extra Screen in the Flow
+    </string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+</resources>
