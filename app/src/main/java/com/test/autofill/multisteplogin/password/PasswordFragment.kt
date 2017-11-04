@@ -59,7 +59,7 @@ class PasswordFragment : Fragment() {
         mainView.notNull {
             constraintLayout = mainView.findViewById(R.id.passwordLayout)
             button = mainView.findViewById(R.id.submitButton)
-            passwordEditText = mainView.findViewById(R.id.passwordEditText)
+            passwordEditText = mainView.findViewById<EditText>(R.id.passwordEditText)
             confirmPasswordEditText = mainView.findViewById(R.id.confirmPasswordEditText)
 
             button.setOnClickListener {
@@ -117,8 +117,12 @@ class PasswordFragment : Fragment() {
     private fun validatePassword(): PasswordValidationResult {
 
         val password = passwordEditText.editableText.toString()
-        val confirmationVisible = confirmPasswordEditText.visibility == View.VISIBLE
-        val confirmPassword = confirmPasswordEditText.editableText.toString()
+        val confirmationVisible = numberOfPasswordFields == 2
+
+        var confirmPassword:String? = null
+        if(confirmationVisible) {
+            confirmPassword = confirmPasswordEditText.editableText.toString()
+        }
 
         if(StringUtils.isBlank(password) || password.length < 3) {
             return PasswordValidationResult.PasswordNotLongEnough

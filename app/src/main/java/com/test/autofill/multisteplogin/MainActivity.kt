@@ -25,9 +25,14 @@ class MainActivity : AppCompatActivity() {
             launchMultiStepLoginWithTwoPasswordFields()
         }
 
-        val multiStepLoginWithExtraScreenInFlow: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenInFlow)
+        val multiStepLoginWithExtraScreenAfterUsername: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenAfterUsername)
+        multiStepLoginWithExtraScreenAfterUsername.setNavigationButtonClickListener { _: View ->
+            launchMultiStepLoginWithExtraScreenAfterUsername()
+        }
+
+        val multiStepLoginWithExtraScreenInFlow: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenAfterPassword)
         multiStepLoginWithExtraScreenInFlow.setNavigationButtonClickListener { _: View ->
-            launchMultiStepLoginWithExtraScreenInFlow()
+            launchMultiStepLoginWithExtraScreenAfterPassword()
         }
     }
 
@@ -35,7 +40,8 @@ class MainActivity : AppCompatActivity() {
         val intent = MultiLoginActivity.createIntent(
                 context = this,
                 numberOfPasswordFields = 1,
-                showExtraScreenAtEndOfFlow = false)
+                showExtraScreenAfterUsername = false,
+                showExtraScreenAfterPassword = false)
         startActivity(intent)
     }
 
@@ -43,16 +49,29 @@ class MainActivity : AppCompatActivity() {
         val intent = MultiLoginActivity.createIntent(
                 context = this,
                 numberOfPasswordFields = 2,
-                showExtraScreenAtEndOfFlow = false)
+                showExtraScreenAfterUsername = false,
+                showExtraScreenAfterPassword = false)
         startActivity(intent)
     }
 
-    private fun launchMultiStepLoginWithExtraScreenInFlow() {
+    private fun launchMultiStepLoginWithExtraScreenAfterUsername() {
         val intent = MultiLoginActivity.createIntent(
                 context = this,
                 numberOfPasswordFields = 1,
-                showExtraScreenAtEndOfFlow = true)
+                showExtraScreenAfterUsername = true,
+                showExtraScreenAfterPassword = false)
+        startActivity(intent)
+    }
+
+    private fun launchMultiStepLoginWithExtraScreenAfterPassword() {
+        val intent = MultiLoginActivity.createIntent(
+                context = this,
+                numberOfPasswordFields = 1,
+                showExtraScreenAfterUsername = false,
+                showExtraScreenAfterPassword = true)
         startActivity(intent)
 
     }
+
+
 }

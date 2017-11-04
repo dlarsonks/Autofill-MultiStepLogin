@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:importantForAutofill="yes">
 
     <EditText
         android:id="@+id/firstNameEditText"
@@ -19,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints="firstName"/>
+        android:autofillHints="name"/>
 
     <EditText
         android:id="@+id/lastNameText"
@@ -33,7 +34,9 @@
         app:layout_constraintEnd_toEndOf="@+id/firstNameEditText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/firstNameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/firstNameEditText"/>
+        app:layout_constraintTop_toBottomOf="@+id/firstNameEditText"
+        android:autofillHints="name"/>
+
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"

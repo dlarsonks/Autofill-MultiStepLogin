@@ -11,7 +11,11 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="password_min_length">Password must be at least 3 chars in length</string>
-    <string name="multi_step_login_extra_screen">Multi-stel Login with an Extra Screen in the Flow
+    <string name="multi_step_login_extra_screen_after_password">Multi-step Login with an Extra Screen at the
+        End of the Flow
+    </string>
+    <string name="multi_step_login_extra_screen_after_username">Multi-step Login with an Extra
+        Screen Between Username and Password
     </string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
