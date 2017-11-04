@@ -2,6 +2,7 @@ package com.test.autofill.multisteplogin.password
 
 import android.content.Context
 import android.os.Bundle
+import android.support.constraint.ConstraintLayout
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.test.autofill.BuildConfig.DEBUG
 import com.test.autofill.R
 import com.test.autofill.multisteplogin.StringUtils
 import com.test.autofill.multisteplogin.notNull
+import android.support.constraint.ConstraintSet
 
 /**
  * Created by dlarson on 10/27/17.
@@ -25,6 +27,9 @@ class PasswordFragment : Fragment() {
     private lateinit var passwordEnteredCallback: PasswordEnteredCallback
     private var numberOfPasswordFields: Int = 1
 
+    private lateinit var constraintLayout: ConstraintLayout
+
+    private lateinit var button: Button
     private lateinit var passwordEditText: EditText
     private lateinit var confirmPasswordEditText: EditText
 
@@ -52,15 +57,27 @@ class PasswordFragment : Fragment() {
         mainView = inflater.inflate(R.layout.password_layout, container, false)
 
         mainView.notNull {
-            mainView.findViewById<Button>(R.id.submitButton).setOnClickListener {
-                submitClicked()
-            }
-
+            constraintLayout = mainView.findViewById<ConstraintLayout>(R.id.passwordLayout)
+            button = mainView.findViewById<Button>(R.id.submitButton)
             passwordEditText = mainView.findViewById(R.id.passwordEditText)
             confirmPasswordEditText = mainView.findViewById(R.id.confirmPasswordEditText)
 
+            button.setOnClickListener {
+                submitClicked()
+            }
+
             when (numberOfPasswordFields) {
-                1 -> confirmPasswordEditText.visibility = View.GONE
+                1 -> {
+                    val constraintSet = ConstraintSet()
+                    constraintSet.clone(constraintLayout)
+
+                    constraintSet.connect(button.getId(), ConstraintSet.START, passwordEditText.getId(), ConstraintSet.START);
+                    constraintSet.connect(button.getId(), ConstraintSet.END, passwordEditText.getId(), ConstraintSet.END);
+                    constraintSet.connect(button.getId(), ConstraintSet.TOP, passwordEditText.getId(), ConstraintSet.BOTTOM);
+                    constraintSet.applyTo(constraintLayout);
+
+                    (confirmPasswordEditText.parent as ViewGroup).removeView(confirmPasswordEditText)
+                }
                 2 -> confirmPasswordEditText.visibility = View.VISIBLE
             }
         }
