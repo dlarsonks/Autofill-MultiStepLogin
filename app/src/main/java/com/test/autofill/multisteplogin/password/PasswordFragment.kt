@@ -57,8 +57,8 @@ class PasswordFragment : Fragment() {
         mainView = inflater.inflate(R.layout.password_layout, container, false)
 
         mainView.notNull {
-            constraintLayout = mainView.findViewById<ConstraintLayout>(R.id.passwordLayout)
-            button = mainView.findViewById<Button>(R.id.submitButton)
+            constraintLayout = mainView.findViewById(R.id.passwordLayout)
+            button = mainView.findViewById(R.id.submitButton)
             passwordEditText = mainView.findViewById(R.id.passwordEditText)
             confirmPasswordEditText = mainView.findViewById(R.id.confirmPasswordEditText)
 
@@ -71,10 +71,10 @@ class PasswordFragment : Fragment() {
                     val constraintSet = ConstraintSet()
                     constraintSet.clone(constraintLayout)
 
-                    constraintSet.connect(button.getId(), ConstraintSet.START, passwordEditText.getId(), ConstraintSet.START);
-                    constraintSet.connect(button.getId(), ConstraintSet.END, passwordEditText.getId(), ConstraintSet.END);
-                    constraintSet.connect(button.getId(), ConstraintSet.TOP, passwordEditText.getId(), ConstraintSet.BOTTOM);
-                    constraintSet.applyTo(constraintLayout);
+                    constraintSet.connect(button.id, ConstraintSet.START, passwordEditText.id, ConstraintSet.START)
+                    constraintSet.connect(button.id, ConstraintSet.END, passwordEditText.id, ConstraintSet.END)
+                    constraintSet.connect(button.id, ConstraintSet.TOP, passwordEditText.id, ConstraintSet.BOTTOM)
+                    constraintSet.applyTo(constraintLayout)
 
                     (confirmPasswordEditText.parent as ViewGroup).removeView(confirmPasswordEditText)
                 }
