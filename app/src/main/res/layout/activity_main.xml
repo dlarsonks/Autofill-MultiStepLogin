@@ -40,6 +40,13 @@
             app:labelText="@string/multi_step_login_extra_screen_after_username">
         </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
+        <com.test.autofill.multisteplogin.navigation.NavigationItem
+            android:id="@+id/multiStepLoginWithExtraScreenBeforeUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:labelText="@string/multi_step_login_extra_screen_before_username">
+        </com.test.autofill.multisteplogin.navigation.NavigationItem>
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

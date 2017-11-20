@@ -26,21 +26,25 @@ class MultiLoginActivity : AppCompatActivity(),
     private var numberOfPasswordFields: Int = 1
     private var showExtraScreenAfterUsername: Boolean = false
     private var showExtraScreenAfterPassword: Boolean = false
+    private var showExtraScreenBeforeUsername: Boolean = false
 
     companion object {
         private val NUMBER_OF_PASSWORD_FIELDS = "number_of_password_fields_extra"
         private val EXTRA_SCREEN_AFTER_USERNAME = "extra_screen_after_username_extra"
         private val EXTRA_SCREEN_AFTER_PASSWORD = "extra_screen_after_password_extra"
+        private val EXTRA_SCREEN_BEFORE_USERNAME = "extra_screen_before_username_extra"
 
         fun createIntent(
                 context: Context,
                 numberOfPasswordFields: Int,
                 showExtraScreenAfterUsername: Boolean,
-                showExtraScreenAfterPassword: Boolean): Intent {
+                showExtraScreenAfterPassword: Boolean,
+                showExtraScreenBeforeUsername: Boolean): Intent {
             val intent = Intent(context, MultiLoginActivity::class.java)
             intent.putExtra(NUMBER_OF_PASSWORD_FIELDS, numberOfPasswordFields)
             intent.putExtra(EXTRA_SCREEN_AFTER_PASSWORD, showExtraScreenAfterPassword)
             intent.putExtra(EXTRA_SCREEN_AFTER_USERNAME, showExtraScreenAfterUsername)
+            intent.putExtra(EXTRA_SCREEN_BEFORE_USERNAME, showExtraScreenBeforeUsername)
             return intent
         }
     }
@@ -52,8 +56,13 @@ class MultiLoginActivity : AppCompatActivity(),
         numberOfPasswordFields = intent.extras.getInt(NUMBER_OF_PASSWORD_FIELDS, 1)
         showExtraScreenAfterUsername = intent.extras.getBoolean(EXTRA_SCREEN_AFTER_USERNAME, false)
         showExtraScreenAfterPassword = intent.extras.getBoolean(EXTRA_SCREEN_AFTER_PASSWORD, false)
+        showExtraScreenBeforeUsername = intent.extras.getBoolean(EXTRA_SCREEN_BEFORE_USERNAME, false)
 
-        showUsernameScreen()
+        if(showExtraScreenBeforeUsername) {
+            showFirstAndLastNameScreen()
+        } else {
+            showUsernameScreen()
+        }
     }
 
     private fun showUsernameScreen() {
@@ -82,7 +91,9 @@ class MultiLoginActivity : AppCompatActivity(),
 
     override fun firstAndLastNameEntered() {
         if (DEBUG) Log.d(TAG, "firstAndLastNameEntered: ")
-        if(showExtraScreenAfterUsername) {
+        if(showExtraScreenBeforeUsername) {
+            showUsernameScreen()
+        } else if (showExtraScreenAfterUsername) {
             showPasswordScreen()
         } else {
             showDoneScreen()

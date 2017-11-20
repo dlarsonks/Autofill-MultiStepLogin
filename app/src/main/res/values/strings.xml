@@ -17,6 +17,10 @@
     <string name="multi_step_login_extra_screen_after_username">Multi-step Login with an Extra
         Screen Between Username and Password
     </string>
+
+    <string name="multi_step_login_extra_screen_before_username">Multi-step Login with an Extra
+        at the Start of the Flow
+    </string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
 </resources>

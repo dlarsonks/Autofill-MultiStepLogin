@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.test.autofill.R
 import com.test.autofill.multisteplogin.navigation.NavigationItem
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by dlarson on 11/1/17.
@@ -34,6 +35,11 @@ class MainActivity : AppCompatActivity() {
         multiStepLoginWithExtraScreenInFlow.setNavigationButtonClickListener { _: View ->
             launchMultiStepLoginWithExtraScreenAfterPassword()
         }
+
+        val multiStepLoginWithExtraScreenBeforeUsername: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenBeforeUsername)
+        multiStepLoginWithExtraScreenBeforeUsername.setNavigationButtonClickListener { _: View ->
+            launchMultiStepLoginWithExtraScreenBeforeUsername()
+        }
     }
 
     private fun launchBasicMultiStepLogin() {
@@ -41,7 +47,8 @@ class MainActivity : AppCompatActivity() {
                 context = this,
                 numberOfPasswordFields = 1,
                 showExtraScreenAfterUsername = false,
-                showExtraScreenAfterPassword = false)
+                showExtraScreenAfterPassword = false,
+                showExtraScreenBeforeUsername = false)
         startActivity(intent)
     }
 
@@ -50,7 +57,8 @@ class MainActivity : AppCompatActivity() {
                 context = this,
                 numberOfPasswordFields = 2,
                 showExtraScreenAfterUsername = false,
-                showExtraScreenAfterPassword = false)
+                showExtraScreenAfterPassword = false,
+                showExtraScreenBeforeUsername = false)
         startActivity(intent)
     }
 
@@ -59,7 +67,8 @@ class MainActivity : AppCompatActivity() {
                 context = this,
                 numberOfPasswordFields = 1,
                 showExtraScreenAfterUsername = true,
-                showExtraScreenAfterPassword = false)
+                showExtraScreenAfterPassword = false,
+                showExtraScreenBeforeUsername = false)
         startActivity(intent)
     }
 
@@ -68,9 +77,19 @@ class MainActivity : AppCompatActivity() {
                 context = this,
                 numberOfPasswordFields = 1,
                 showExtraScreenAfterUsername = false,
-                showExtraScreenAfterPassword = true)
+                showExtraScreenAfterPassword = true,
+                showExtraScreenBeforeUsername = false)
         startActivity(intent)
+    }
 
+    private fun launchMultiStepLoginWithExtraScreenBeforeUsername() {
+        val intent = MultiLoginActivity.createIntent(
+                context = this,
+                numberOfPasswordFields = 1,
+                showExtraScreenAfterUsername = false,
+                showExtraScreenAfterPassword = false,
+                showExtraScreenBeforeUsername = true)
+        startActivity(intent)
     }
 
 
