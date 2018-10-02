@@ -15,23 +15,23 @@ import com.test.autofill.R
  * Created by dlarson on 10/27/17.
  */
 class UsernameFragment :  android.support.v4.app.Fragment() {
-    val TAG = UsernameFragment::class.simpleName
-
-    private var mainView: View? = null
-    private lateinit var usernameEnteredCallback: UsernameEnteredCallback
-
     companion object {
+        val TAG = UsernameFragment::class.simpleName
+
         fun newInstance() : Fragment {
             return UsernameFragment()
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?,
+    private var mainView: View? = null
+    private lateinit var usernameEnteredCallback: UsernameEnteredCallback
+
+    override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         container?.removeAllViews()
 
-        mainView = inflater?.inflate(R.layout.username_layout, container, false)
+        mainView = inflater.inflate(R.layout.username_layout, container, false)
 
         if (mainView != null) {
             mainView?.findViewById<Button>(R.id.submitButton)?.setOnClickListener {
