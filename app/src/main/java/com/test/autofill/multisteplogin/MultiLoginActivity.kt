@@ -20,27 +20,30 @@ class MultiLoginActivity : AppCompatActivity(),
         PasswordEnteredCallback,
         FirstAndLastNameEnteredCallback {
 
-
-    val TAG = MultiLoginActivity::class.simpleName
-
+    private var showUsernameScreen: Boolean = true
     private var numberOfPasswordFields: Int = 1
     private var showExtraScreenAfterUsername: Boolean = false
     private var showExtraScreenAfterPassword: Boolean = false
     private var showExtraScreenBeforeUsername: Boolean = false
 
     companion object {
-        private val NUMBER_OF_PASSWORD_FIELDS = "number_of_password_fields_extra"
-        private val EXTRA_SCREEN_AFTER_USERNAME = "extra_screen_after_username_extra"
-        private val EXTRA_SCREEN_AFTER_PASSWORD = "extra_screen_after_password_extra"
-        private val EXTRA_SCREEN_BEFORE_USERNAME = "extra_screen_before_username_extra"
+        val TAG = MultiLoginActivity::class.simpleName
+
+        private const val SHOW_USERNAME_SCREEN = "show_username_screen_extra"
+        private const val NUMBER_OF_PASSWORD_FIELDS = "number_of_password_fields_extra"
+        private const val EXTRA_SCREEN_AFTER_USERNAME = "extra_screen_after_username_extra"
+        private const val EXTRA_SCREEN_AFTER_PASSWORD = "extra_screen_after_password_extra"
+        private const val EXTRA_SCREEN_BEFORE_USERNAME = "extra_screen_before_username_extra"
 
         fun createIntent(
                 context: Context,
+                showUsernameScreen: Boolean = true,
                 numberOfPasswordFields: Int,
                 showExtraScreenAfterUsername: Boolean,
                 showExtraScreenAfterPassword: Boolean,
                 showExtraScreenBeforeUsername: Boolean): Intent {
             val intent = Intent(context, MultiLoginActivity::class.java)
+            intent.putExtra(SHOW_USERNAME_SCREEN, showUsernameScreen)
             intent.putExtra(NUMBER_OF_PASSWORD_FIELDS, numberOfPasswordFields)
             intent.putExtra(EXTRA_SCREEN_AFTER_PASSWORD, showExtraScreenAfterPassword)
             intent.putExtra(EXTRA_SCREEN_AFTER_USERNAME, showExtraScreenAfterUsername)
@@ -55,16 +58,19 @@ class MultiLoginActivity : AppCompatActivity(),
 
         val extras = intent.extras
         if (extras != null) {
+            showUsernameScreen = extras.getBoolean(SHOW_USERNAME_SCREEN, true)
             numberOfPasswordFields = extras.getInt(NUMBER_OF_PASSWORD_FIELDS, 1)
             showExtraScreenAfterUsername = extras.getBoolean(EXTRA_SCREEN_AFTER_USERNAME, false)
             showExtraScreenAfterPassword = extras.getBoolean(EXTRA_SCREEN_AFTER_PASSWORD, false)
             showExtraScreenBeforeUsername = extras.getBoolean(EXTRA_SCREEN_BEFORE_USERNAME, false)
         }
 
-        if(showExtraScreenBeforeUsername) {
+        if (showExtraScreenBeforeUsername) {
             showFirstAndLastNameScreen()
-        } else {
+        } else if (showUsernameScreen) {
             showUsernameScreen()
+        } else {
+            showPasswordScreen()
         }
     }
 

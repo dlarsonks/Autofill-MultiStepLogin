@@ -5,6 +5,7 @@
     <string name="done">Done!</string>
     <string name="multi_step_login">Multi-step Login</string>
     <string name="basic_multi_step_login">Basic Multi-step Login</string>
+    <string name="password_only_login">Password-Only Login</string>
     <string name="multi_step_login_two_password_fields">Multi-step Login with Two Password Fields
     </string>
     <string name="submit">Submit</string>
