@@ -2,7 +2,7 @@ package com.test.autofill.multisteplogin.first_last_name
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,14 +15,15 @@ import com.test.autofill.multisteplogin.notNull
 /**
  * Created by dlarson on 10/27/17.
  */
-class FirstAndLastNameFragment :  Fragment() {
-    val TAG = FirstAndLastNameFragment::class.simpleName
+class FirstAndLastNameFragment :  androidx.fragment.app.Fragment() {
 
     private lateinit var mainView: View
     private lateinit var firstAndLastNameEnteredCallback: FirstAndLastNameEnteredCallback
 
     companion object {
-        fun newInstance() : Fragment {
+        val TAG = FirstAndLastNameFragment::class.simpleName
+
+        fun newInstance() : androidx.fragment.app.Fragment {
             return FirstAndLastNameFragment()
         }
     }
@@ -48,7 +49,7 @@ class FirstAndLastNameFragment :  Fragment() {
         firstAndLastNameEnteredCallback.firstAndLastNameEntered()
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if(context is FirstAndLastNameEnteredCallback) {
             firstAndLastNameEnteredCallback = context

@@ -2,10 +2,10 @@ package com.test.autofill.multisteplogin
 
 import android.content.Context
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.util.Log
+import androidx.fragment.app.Fragment
 import com.test.autofill.BuildConfig.DEBUG
 import com.test.autofill.multisteplogin.password.PasswordFragment
 import com.test.autofill.R
@@ -65,12 +65,10 @@ class MultiLoginActivity : AppCompatActivity(),
             showExtraScreenBeforeUsername = extras.getBoolean(EXTRA_SCREEN_BEFORE_USERNAME, false)
         }
 
-        if (showExtraScreenBeforeUsername) {
-            showFirstAndLastNameScreen()
-        } else if (showUsernameScreen) {
-            showUsernameScreen()
-        } else {
-            showPasswordScreen()
+        when {
+            showExtraScreenBeforeUsername -> showFirstAndLastNameScreen()
+            showUsernameScreen -> showUsernameScreen()
+            else -> showPasswordScreen()
         }
     }
 

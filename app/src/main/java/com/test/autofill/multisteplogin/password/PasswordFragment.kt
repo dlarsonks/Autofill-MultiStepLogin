@@ -2,8 +2,7 @@ package com.test.autofill.multisteplogin.password
 
 import android.content.Context
 import android.os.Bundle
-import android.support.constraint.ConstraintLayout
-import android.support.v4.app.Fragment
+import androidx.constraintlayout.widget.ConstraintLayout
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,14 +14,13 @@ import com.test.autofill.BuildConfig.DEBUG
 import com.test.autofill.R
 import com.test.autofill.multisteplogin.StringUtils
 import com.test.autofill.multisteplogin.notNull
-import android.support.constraint.ConstraintSet
+import androidx.constraintlayout.widget.ConstraintSet
+import androidx.fragment.app.Fragment
 
 /**
  * Created by dlarson on 10/27/17.
  */
 class PasswordFragment : Fragment() {
-    val TAG = PasswordFragment::class.simpleName
-
     private lateinit var mainView: View
     private lateinit var passwordEnteredCallback: PasswordEnteredCallback
     private var numberOfPasswordFields: Int = 1
@@ -34,8 +32,9 @@ class PasswordFragment : Fragment() {
     private lateinit var confirmPasswordEditText: EditText
 
     companion object {
+        val TAG = PasswordFragment::class.simpleName
 
-        private val number_of_password_fields = "number_of_password_fields_extra"
+        private const val number_of_password_fields = "number_of_password_fields_extra"
         fun newInstance(numberOfPasswordFields: Int) : Fragment {
             val bundle = Bundle()
             bundle.putInt(number_of_password_fields, numberOfPasswordFields)
@@ -59,7 +58,7 @@ class PasswordFragment : Fragment() {
         mainView.notNull {
             constraintLayout = mainView.findViewById(R.id.passwordLayout)
             button = mainView.findViewById(R.id.submitButton)
-            passwordEditText = mainView.findViewById<EditText>(R.id.passwordEditText)
+            passwordEditText = mainView.findViewById(R.id.passwordEditText)
             confirmPasswordEditText = mainView.findViewById(R.id.confirmPasswordEditText)
 
             button.setOnClickListener {
@@ -133,7 +132,7 @@ class PasswordFragment : Fragment() {
         return PasswordValidationResult.Success
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if(context is PasswordEnteredCallback) {
             passwordEnteredCallback = context

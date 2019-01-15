@@ -2,7 +2,7 @@ package com.test.autofill.multisteplogin.username
 
 import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,7 @@ import com.test.autofill.R
 /**
  * Created by dlarson on 10/27/17.
  */
-class UsernameFragment :  android.support.v4.app.Fragment() {
+class UsernameFragment :  Fragment() {
     companion object {
         val TAG = UsernameFragment::class.simpleName
 
@@ -43,11 +43,11 @@ class UsernameFragment :  android.support.v4.app.Fragment() {
     }
 
     private fun submitClicked() {
-        if (DEBUG) Log.d(TAG, "submitClicked: ");
+        if (DEBUG) Log.d(TAG, "submitClicked: ")
         usernameEnteredCallback.usernameEntered()
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if(context is UsernameEnteredCallback) {
             usernameEnteredCallback = context

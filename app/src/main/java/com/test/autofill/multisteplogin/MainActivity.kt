@@ -1,11 +1,9 @@
 package com.test.autofill.multisteplogin
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.test.autofill.R
 import com.test.autofill.multisteplogin.navigation.NavigationItem
-import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by dlarson on 11/1/17.
@@ -17,32 +15,32 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val basicMultiStepLogin: NavigationItem = findViewById(R.id.basicMultiStepLogin)
-        basicMultiStepLogin.setNavigationButtonClickListener{ _: View ->
+        basicMultiStepLogin.setNavigationButtonClickListener{
             launchBasicMultiStepLogin()
         }
         
         val passwordOnlyLogin: NavigationItem = findViewById(R.id.passwordOnlyLogin)
-        passwordOnlyLogin.setNavigationButtonClickListener { _: View ->
+        passwordOnlyLogin.setNavigationButtonClickListener {
             launchPasswordOnlyLogin()
         }
 
         val multiStepTwoPasswordFields: NavigationItem = findViewById(R.id.multiStepLoginWithTwoPasswordFields)
-        multiStepTwoPasswordFields.setNavigationButtonClickListener { _: View ->
+        multiStepTwoPasswordFields.setNavigationButtonClickListener {
             launchMultiStepLoginWithTwoPasswordFields()
         }
 
         val multiStepLoginWithExtraScreenAfterUsername: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenAfterUsername)
-        multiStepLoginWithExtraScreenAfterUsername.setNavigationButtonClickListener { _: View ->
+        multiStepLoginWithExtraScreenAfterUsername.setNavigationButtonClickListener {
             launchMultiStepLoginWithExtraScreenAfterUsername()
         }
 
         val multiStepLoginWithExtraScreenInFlow: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenAfterPassword)
-        multiStepLoginWithExtraScreenInFlow.setNavigationButtonClickListener { _: View ->
+        multiStepLoginWithExtraScreenInFlow.setNavigationButtonClickListener {
             launchMultiStepLoginWithExtraScreenAfterPassword()
         }
 
         val multiStepLoginWithExtraScreenBeforeUsername: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenBeforeUsername)
-        multiStepLoginWithExtraScreenBeforeUsername.setNavigationButtonClickListener { _: View ->
+        multiStepLoginWithExtraScreenBeforeUsername.setNavigationButtonClickListener {
             launchMultiStepLoginWithExtraScreenBeforeUsername()
         }
     }

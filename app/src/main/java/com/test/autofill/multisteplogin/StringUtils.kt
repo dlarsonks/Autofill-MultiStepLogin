@@ -6,7 +6,7 @@ package com.test.autofill.multisteplogin
 object StringUtils {
 
     fun isBlank(input: String?): Boolean {
-        if (input == null || input.length == 0) {
+        if (input == null || input.isEmpty()) {
             return true
         }
 
