@@ -2,8 +2,9 @@ package com.test.autofill.multisteplogin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.test.autofill.R
-import com.test.autofill.multisteplogin.navigation.NavigationItem
+import com.test.autofill.databinding.ActivityMainBinding
 
 /**
  * Created by dlarson on 11/1/17.
@@ -12,37 +13,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        val basicMultiStepLogin: NavigationItem = findViewById(R.id.basicMultiStepLogin)
-        basicMultiStepLogin.setNavigationButtonClickListener{
-            launchBasicMultiStepLogin()
-        }
-        
-        val passwordOnlyLogin: NavigationItem = findViewById(R.id.passwordOnlyLogin)
-        passwordOnlyLogin.setNavigationButtonClickListener {
-            launchPasswordOnlyLogin()
-        }
+        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val multiStepTwoPasswordFields: NavigationItem = findViewById(R.id.multiStepLoginWithTwoPasswordFields)
-        multiStepTwoPasswordFields.setNavigationButtonClickListener {
-            launchMultiStepLoginWithTwoPasswordFields()
-        }
-
-        val multiStepLoginWithExtraScreenAfterUsername: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenAfterUsername)
-        multiStepLoginWithExtraScreenAfterUsername.setNavigationButtonClickListener {
-            launchMultiStepLoginWithExtraScreenAfterUsername()
-        }
-
-        val multiStepLoginWithExtraScreenInFlow: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenAfterPassword)
-        multiStepLoginWithExtraScreenInFlow.setNavigationButtonClickListener {
-            launchMultiStepLoginWithExtraScreenAfterPassword()
-        }
-
-        val multiStepLoginWithExtraScreenBeforeUsername: NavigationItem = findViewById(R.id.multiStepLoginWithExtraScreenBeforeUsername)
-        multiStepLoginWithExtraScreenBeforeUsername.setNavigationButtonClickListener {
-            launchMultiStepLoginWithExtraScreenBeforeUsername()
-        }
+        binding.basicMultiStepLogin.setNavigationButtonClickListener { launchBasicMultiStepLogin() }
+        binding.passwordOnlyLogin.setNavigationButtonClickListener { launchPasswordOnlyLogin() }
+        binding.multiStepLoginWithTwoPasswordFields.setNavigationButtonClickListener { launchMultiStepLoginWithTwoPasswordFields() }
+        binding.multiStepLoginWithExtraScreenAfterUsername.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenAfterUsername() }
+        binding.multiStepLoginWithExtraScreenAfterPassword.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenAfterPassword() }
+        binding.multiStepLoginWithExtraScreenBeforeUsername.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenBeforeUsername() }
     }
 
     private fun launchBasicMultiStepLogin() {

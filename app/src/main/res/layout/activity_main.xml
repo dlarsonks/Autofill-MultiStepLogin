@@ -1,59 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.test.autofill.multisteplogin.MultiLoginActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical"
-                  android:padding="16dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.test.autofill.multisteplogin.MultiLoginActivity">
 
-        <com.test.autofill.multisteplogin.navigation.NavigationItem
-            android:id="@+id/basicMultiStepLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:labelText="@string/basic_multi_step_login">
-        </com.test.autofill.multisteplogin.navigation.NavigationItem>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:padding="16dp">
 
-        <com.test.autofill.multisteplogin.navigation.NavigationItem
-            android:id="@+id/passwordOnlyLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:labelText="@string/password_only_login">
-        </com.test.autofill.multisteplogin.navigation.NavigationItem>
+            <com.test.autofill.multisteplogin.navigation.NavigationItem
+                android:id="@+id/basicMultiStepLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="@string/basic_multi_step_login">
+            </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
-        <com.test.autofill.multisteplogin.navigation.NavigationItem
-            android:id="@+id/multiStepLoginWithTwoPasswordFields"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:labelText="@string/multi_step_login_two_password_fields">
-        </com.test.autofill.multisteplogin.navigation.NavigationItem>
+            <com.test.autofill.multisteplogin.navigation.NavigationItem
+                android:id="@+id/passwordOnlyLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="@string/password_only_login">
+            </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
-        <com.test.autofill.multisteplogin.navigation.NavigationItem
-            android:id="@+id/multiStepLoginWithExtraScreenAfterPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:labelText="@string/multi_step_login_extra_screen_after_password">
-        </com.test.autofill.multisteplogin.navigation.NavigationItem>
+            <com.test.autofill.multisteplogin.navigation.NavigationItem
+                android:id="@+id/multiStepLoginWithTwoPasswordFields"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="@string/multi_step_login_two_password_fields">
+            </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
-        <com.test.autofill.multisteplogin.navigation.NavigationItem
-            android:id="@+id/multiStepLoginWithExtraScreenAfterUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:labelText="@string/multi_step_login_extra_screen_after_username">
-        </com.test.autofill.multisteplogin.navigation.NavigationItem>
+            <com.test.autofill.multisteplogin.navigation.NavigationItem
+                android:id="@+id/multiStepLoginWithExtraScreenAfterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="@string/multi_step_login_extra_screen_after_password">
+            </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
-        <com.test.autofill.multisteplogin.navigation.NavigationItem
-            android:id="@+id/multiStepLoginWithExtraScreenBeforeUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:labelText="@string/multi_step_login_extra_screen_before_username">
-        </com.test.autofill.multisteplogin.navigation.NavigationItem>
+            <com.test.autofill.multisteplogin.navigation.NavigationItem
+                android:id="@+id/multiStepLoginWithExtraScreenAfterUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="@string/multi_step_login_extra_screen_after_username">
+            </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
-    </LinearLayout>
+            <com.test.autofill.multisteplogin.navigation.NavigationItem
+                android:id="@+id/multiStepLoginWithExtraScreenBeforeUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="@string/multi_step_login_extra_screen_before_username">
+            </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

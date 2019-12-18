@@ -15,7 +15,7 @@ import com.test.autofill.multisteplogin.notNull
 /**
  * Created by dlarson on 10/27/17.
  */
-class FirstAndLastNameFragment :  androidx.fragment.app.Fragment() {
+class FirstAndLastNameFragment :  Fragment() {
 
     private lateinit var mainView: View
     private lateinit var firstAndLastNameEnteredCallback: FirstAndLastNameEnteredCallback
@@ -23,7 +23,7 @@ class FirstAndLastNameFragment :  androidx.fragment.app.Fragment() {
     companion object {
         val TAG = FirstAndLastNameFragment::class.simpleName
 
-        fun newInstance() : androidx.fragment.app.Fragment {
+        fun newInstance() : Fragment {
             return FirstAndLastNameFragment()
         }
     }
