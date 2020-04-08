@@ -55,6 +55,13 @@
                 app:labelText="@string/multi_step_login_extra_screen_before_username">
             </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
+            <com.test.autofill.multisteplogin.navigation.NavigationItem
+                android:id="@+id/usernameAndPasswordOnSameScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:labelText="@string/username_password_together">
+            </com.test.autofill.multisteplogin.navigation.NavigationItem>
+
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="done">Done!</string>
+    <string name="username_password_together">Username &amp; Password Together</string>
     <string name="multi_step_login">Multi-step Login</string>
     <string name="basic_multi_step_login">Basic Multi-step Login</string>
     <string name="password_only_login">Password-Only Login</string>

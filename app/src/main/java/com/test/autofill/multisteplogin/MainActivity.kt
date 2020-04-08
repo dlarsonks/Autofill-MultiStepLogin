@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.test.autofill.R
 import com.test.autofill.databinding.ActivityMainBinding
+import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
 
 /**
  * Created by dlarson on 11/1/17.
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         binding.multiStepLoginWithExtraScreenAfterUsername.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenAfterUsername() }
         binding.multiStepLoginWithExtraScreenAfterPassword.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenAfterPassword() }
         binding.multiStepLoginWithExtraScreenBeforeUsername.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenBeforeUsername() }
+        binding.usernameAndPasswordOnSameScreen.setNavigationButtonClickListener { launchUsernameAndPasswordOnSameScreen() }
     }
 
     private fun launchBasicMultiStepLogin() {
@@ -87,6 +89,11 @@ class MainActivity : AppCompatActivity() {
                 showExtraScreenAfterUsername = false,
                 showExtraScreenAfterPassword = false,
                 showExtraScreenBeforeUsername = true)
+        startActivity(intent)
+    }
+
+    private fun launchUsernameAndPasswordOnSameScreen() {
+        val intent = UsernamePasswordTogetherActivity.createIntent(this)
         startActivity(intent)
     }
 
