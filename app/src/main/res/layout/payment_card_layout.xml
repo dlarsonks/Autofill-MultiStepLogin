@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:importantForAutofill="yes">
+
+    <EditText
+        android:id="@+id/nameOnCard"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:autofillHints="name"
+        android:hint="@string/name_on_card"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/cardNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:autofillHints="creditCardNumber"
+        android:ems="10"
+        android:hint="@string/card_number"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/nameOnCard"
+        app:layout_constraintStart_toStartOf="@+id/nameOnCard"
+        app:layout_constraintTop_toBottomOf="@+id/nameOnCard" />
+
+    <EditText
+        android:id="@+id/expiration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="@string/card_expiration_mm_yyyy"
+        android:autofillHints="creditCardExpirationDate"
+        app:layout_constraintEnd_toEndOf="@+id/cardNumber"
+        app:layout_constraintStart_toStartOf="@+id/cardNumber"
+        app:layout_constraintTop_toBottomOf="@+id/cardNumber" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/submit"
+        app:layout_constraintEnd_toEndOf="@+id/expiration"
+        app:layout_constraintStart_toStartOf="@+id/expiration"
+        app:layout_constraintTop_toBottomOf="@+id/expiration" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

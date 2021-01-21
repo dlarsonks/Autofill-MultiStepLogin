@@ -25,4 +25,13 @@
     </string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
+    <string name="payment_card">Payment Card</string>
+    <string name="card_number">Card Number</string>
+    <string name="name_on_card">Name on Card</string>
+    <string name="card_expiration_mm_yyyy">MM/YYYY</string>
+    <string name="address">Address</string>
+    <string name="address_line_1">Address Line 1</string>
+    <string name="address_line_2">Address Line 2</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
 </resources>

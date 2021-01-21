@@ -2,8 +2,6 @@ package com.test.autofill.multisteplogin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import com.test.autofill.R
 import com.test.autofill.databinding.ActivityMainBinding
 import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
 
@@ -15,7 +13,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         binding.basicMultiStepLogin.setNavigationButtonClickListener { launchBasicMultiStepLogin() }
         binding.passwordOnlyLogin.setNavigationButtonClickListener { launchPasswordOnlyLogin() }
@@ -24,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         binding.multiStepLoginWithExtraScreenAfterPassword.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenAfterPassword() }
         binding.multiStepLoginWithExtraScreenBeforeUsername.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenBeforeUsername() }
         binding.usernameAndPasswordOnSameScreen.setNavigationButtonClickListener { launchUsernameAndPasswordOnSameScreen() }
+        binding.paymentCard.setNavigationButtonClickListener { launchPaymentCardScreen() }
+        binding.address.setNavigationButtonClickListener { launchAddressScreen() }
     }
 
     private fun launchBasicMultiStepLogin() {
@@ -97,4 +98,13 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    private fun launchPaymentCardScreen() {
+        val intent = MainProfileActivity.createShowPaymentCardIntent(this)
+        startActivity(intent)
+    }
+
+    private fun launchAddressScreen() {
+        val intent = MainProfileActivity.createShowAddressIntent(this)
+        startActivity(intent)
+    }
 }

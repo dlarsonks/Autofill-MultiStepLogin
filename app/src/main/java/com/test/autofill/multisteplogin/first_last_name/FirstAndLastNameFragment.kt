@@ -2,23 +2,18 @@ package com.test.autofill.multisteplogin.first_last_name
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.fragment.app.Fragment
 import com.test.autofill.BuildConfig.DEBUG
-import com.test.autofill.R
-import com.test.autofill.multisteplogin.notNull
+import com.test.autofill.databinding.FirstLastNameLayoutBinding
 
 /**
  * Created by dlarson on 10/27/17.
  */
 class FirstAndLastNameFragment :  Fragment() {
-
-    private lateinit var mainView: View
-    private lateinit var firstAndLastNameEnteredCallback: FirstAndLastNameEnteredCallback
 
     companion object {
         val TAG = FirstAndLastNameFragment::class.simpleName
@@ -28,20 +23,15 @@ class FirstAndLastNameFragment :  Fragment() {
         }
     }
 
+    private lateinit var firstAndLastNameEnteredCallback: FirstAndLastNameEnteredCallback
+
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        container?.removeAllViews()
+                              savedInstanceState: Bundle?): View {
 
-        mainView = inflater.inflate(R.layout.first_last_name_layout, container, false)
-
-        mainView.notNull {
-            mainView.findViewById<Button>(R.id.submitButton)?.setOnClickListener {
-                submitClicked()
-            }
-        }
-
-        return mainView
+        val binding = FirstLastNameLayoutBinding.inflate(inflater)
+        binding.submitButton.setOnClickListener { submitClicked() }
+        return binding.root
     }
 
     private fun submitClicked() {
@@ -51,7 +41,7 @@ class FirstAndLastNameFragment :  Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is FirstAndLastNameEnteredCallback) {
+        if (context is FirstAndLastNameEnteredCallback) {
             firstAndLastNameEnteredCallback = context
         }
     }
