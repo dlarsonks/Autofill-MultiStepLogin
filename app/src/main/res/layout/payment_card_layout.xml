@@ -21,7 +21,7 @@
 
     <EditText
         android:id="@+id/cardNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:autofillHints="creditCardNumber"
@@ -34,11 +34,10 @@
 
     <EditText
         android:id="@+id/expiration"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/card_expiration_mm_yyyy"
         android:autofillHints="creditCardExpirationDate"
         app:layout_constraintEnd_toEndOf="@+id/cardNumber"

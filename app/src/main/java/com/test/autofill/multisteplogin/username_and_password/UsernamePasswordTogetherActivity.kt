@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.test.autofill.BuildConfig.DEBUG
-import com.test.autofill.databinding.UsernameAndPasswordLayoutBinding
 import com.test.autofill.databinding.UsernameAndPasswordLayoutWLabelBinding
 import com.test.autofill.multisteplogin.DoneActivity
 import com.test.autofill.multisteplogin.MultiLoginActivity
