@@ -113,7 +113,7 @@ class MultiLoginActivity : AppCompatActivity(),
 
     private fun showDoneScreen() {
         if (DEBUG) Log.d(TAG, "showDoneScreen: ")
-        val intent = Intent(this, DoneActivity::class.java)
+        val intent = DoneActivity.createIntent(this)
         startActivity(intent)
         finish()
     }

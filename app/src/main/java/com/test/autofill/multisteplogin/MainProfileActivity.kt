@@ -80,7 +80,7 @@ class MainProfileActivity : AppCompatActivity(),
     }
 
     private fun showDoneScreen() {
-        val intent = Intent(this, DoneActivity::class.java)
+        val intent = DoneActivity.createIntent(this)
         startActivity(intent)
         finish()
     }

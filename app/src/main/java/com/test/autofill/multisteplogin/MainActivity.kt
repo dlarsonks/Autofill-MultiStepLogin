@@ -3,6 +3,7 @@ package com.test.autofill.multisteplogin
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.test.autofill.databinding.ActivityMainBinding
+import com.test.autofill.multisteplogin.otp.OtpActivity
 import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
 
 /**
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         binding.usernameAndPasswordOnSameScreen.setNavigationButtonClickListener { launchUsernameAndPasswordOnSameScreen() }
         binding.paymentCard.setNavigationButtonClickListener { launchPaymentCardScreen() }
         binding.address.setNavigationButtonClickListener { launchAddressScreen() }
+        binding.twoFactorCode.setNavigationButtonClickListener { launchTwoFactorCodeScreen() }
     }
 
     private fun launchBasicMultiStepLogin() {
@@ -105,6 +107,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchAddressScreen() {
         val intent = MainProfileActivity.createShowAddressIntent(this)
+        startActivity(intent)
+    }
+
+    private fun launchTwoFactorCodeScreen() {
+        val intent = OtpActivity.createIntent(this)
         startActivity(intent)
     }
 }

@@ -89,6 +89,14 @@
 
                 </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
+                <com.test.autofill.multisteplogin.navigation.NavigationItem
+                    android:id="@+id/twoFactorCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="@string/two_factor_code">
+
+                </com.test.autofill.multisteplogin.navigation.NavigationItem>
+
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
