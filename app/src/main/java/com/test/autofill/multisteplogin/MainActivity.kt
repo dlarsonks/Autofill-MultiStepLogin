@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.test.autofill.databinding.ActivityMainBinding
 import com.test.autofill.multisteplogin.otp.OtpActivity
 import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
+import com.test.autofill.multisteplogin.webview.WebViewActivity
 
 /**
  * Created by dlarson on 11/1/17.
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding.paymentCard.setNavigationButtonClickListener { launchPaymentCardScreen() }
         binding.address.setNavigationButtonClickListener { launchAddressScreen() }
         binding.twoFactorCode.setNavigationButtonClickListener { launchTwoFactorCodeScreen() }
+        binding.webview.setNavigationButtonClickListener { launchWebViewScreen() }
     }
 
     private fun launchBasicMultiStepLogin() {
@@ -114,4 +116,10 @@ class MainActivity : AppCompatActivity() {
         val intent = OtpActivity.createIntent(this)
         startActivity(intent)
     }
+
+    private fun launchWebViewScreen() {
+        val intent = WebViewActivity.createIntent(this)
+        startActivity(intent)
+    }
+
 }
