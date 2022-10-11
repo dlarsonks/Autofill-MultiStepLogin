@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.test.autofill.databinding.ActivityMainBinding
 import com.test.autofill.multisteplogin.otp.OtpActivity
+import com.test.autofill.multisteplogin.otp.OtpMultiActivity
 import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
 import com.test.autofill.multisteplogin.webview.WebViewActivity
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         binding.paymentCard.setNavigationButtonClickListener { launchPaymentCardScreen() }
         binding.address.setNavigationButtonClickListener { launchAddressScreen() }
         binding.twoFactorCode.setNavigationButtonClickListener { launchTwoFactorCodeScreen() }
+        binding.twoFactorCodeMulti.setNavigationButtonClickListener { launchTwoFactorCodeScreenMulti() }
         binding.webview.setNavigationButtonClickListener { launchWebViewScreen() }
     }
 
@@ -114,6 +116,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchTwoFactorCodeScreen() {
         val intent = OtpActivity.createIntent(this)
+        startActivity(intent)
+    }
+
+    private fun launchTwoFactorCodeScreenMulti() {
+        val intent = OtpMultiActivity.createIntent(this)
         startActivity(intent)
     }
 

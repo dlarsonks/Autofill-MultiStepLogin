@@ -29,6 +29,7 @@
         <activity android:name=".multisteplogin.username_and_password.UsernamePasswordTogetherActivity" />
         <activity android:name=".multisteplogin.MainProfileActivity" />
         <activity android:name=".multisteplogin.otp.OtpActivity" />
+        <activity android:name=".multisteplogin.otp.OtpMultiActivity" />
         <activity android:name=".multisteplogin.webview.WebViewActivity" />
 
     </application>

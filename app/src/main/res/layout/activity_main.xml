@@ -98,6 +98,14 @@
                 </com.test.autofill.multisteplogin.navigation.NavigationItem>
 
                 <com.test.autofill.multisteplogin.navigation.NavigationItem
+                    android:id="@+id/twoFactorCodeMulti"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="@string/two_factor_code_multi">
+
+                </com.test.autofill.multisteplogin.navigation.NavigationItem>
+
+                <com.test.autofill.multisteplogin.navigation.NavigationItem
                     android:id="@+id/webview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
