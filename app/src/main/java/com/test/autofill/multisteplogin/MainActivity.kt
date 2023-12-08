@@ -37,12 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchBasicMultiStepLogin() {
         val intent = MultiLoginActivity.createIntent(
-                context = this,
-                showUsernameScreen = true,
-                numberOfPasswordFields = 1,
-                showExtraScreenAfterUsername = false,
-                showExtraScreenAfterPassword = false,
-                showExtraScreenBeforeUsername = false)
+            context = this,
+            showUsernameScreen = true,
+            numberOfPasswordFields = 1,
+            showExtraScreenAfterUsername = false,
+            showExtraScreenAfterPassword = false,
+            showExtraScreenBeforeUsername = false
+        )
         startActivity(intent)
     }
 
