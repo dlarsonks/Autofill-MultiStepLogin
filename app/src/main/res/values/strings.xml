@@ -38,5 +38,6 @@
     <string name="phone_number">Phone Number</string>
     <string name="two_factor_code">Two-Factor Code</string>
     <string name="two_factor_code_multi">Two-Factor Code Multi</string>
+    <string name="otp_username_password">OTP, Username, Password</string>
     <string name="webview">WebView</string>
 </resources>
