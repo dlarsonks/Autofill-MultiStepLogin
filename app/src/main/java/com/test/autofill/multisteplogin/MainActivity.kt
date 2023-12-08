@@ -49,12 +49,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchPasswordOnlyLogin() {
         val intent = MultiLoginActivity.createIntent(
-                context = this,
-                showUsernameScreen = false,
-                numberOfPasswordFields = 1,
-                showExtraScreenAfterUsername = false,
-                showExtraScreenAfterPassword = false,
-                showExtraScreenBeforeUsername = false)
+            context = this,
+            showUsernameScreen = false,
+            numberOfPasswordFields = 1,
+            showExtraScreenAfterUsername = false,
+            showExtraScreenAfterPassword = false,
+            showExtraScreenBeforeUsername = false
+        )
         startActivity(intent)
     }
     
