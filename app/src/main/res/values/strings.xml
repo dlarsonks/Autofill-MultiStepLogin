@@ -40,4 +40,7 @@
     <string name="two_factor_code_multi">Two-Factor Code Multi</string>
     <string name="otp_username_password">OTP, Username, Password</string>
     <string name="webview">WebView</string>
+    <string name="password_visible">Password Visible</string>
+    <string name="password_not_visible">Password Not Visible</string>
+    <string name="otp_code">Enter One-Time Passcode</string>"
 </resources>

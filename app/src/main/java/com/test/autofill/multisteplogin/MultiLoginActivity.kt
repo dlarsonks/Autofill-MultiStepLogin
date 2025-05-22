@@ -5,15 +5,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.Fragment
 import com.test.autofill.BuildConfig.DEBUG
 import com.test.autofill.multisteplogin.password.PasswordFragment
 import com.test.autofill.R
+import com.test.autofill.databinding.FragmentLayoutBinding
 import com.test.autofill.multisteplogin.first_last_name.FirstAndLastNameEnteredCallback
 import com.test.autofill.multisteplogin.first_last_name.FirstAndLastNameFragment
 import com.test.autofill.multisteplogin.password.PasswordEnteredCallback
 import com.test.autofill.multisteplogin.username.UsernameEnteredCallback
 import com.test.autofill.multisteplogin.username.UsernameFragment
+import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
+import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 
 class MultiLoginActivity : AppCompatActivity(),
         UsernameEnteredCallback,
@@ -54,7 +58,13 @@ class MultiLoginActivity : AppCompatActivity(),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_layout)
+        enableEdgeToEdge()
+
+        val binding = FragmentLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setNavigationBarContrastNotEnforced()
+        applyInsetsPaddingIgnoreBottom(binding.root)
 
         val extras = intent.extras
         if (extras != null) {

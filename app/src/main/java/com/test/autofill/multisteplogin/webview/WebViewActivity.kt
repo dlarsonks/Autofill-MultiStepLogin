@@ -6,8 +6,11 @@ import android.content.Intent
 import android.os.Bundle
 import android.webkit.WebSettings
 import android.webkit.WebViewClient
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.test.autofill.databinding.WebviewLayoutBinding
+import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
+import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 
 class WebViewActivity : AppCompatActivity() {
     companion object {
@@ -19,6 +22,7 @@ class WebViewActivity : AppCompatActivity() {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
 
         val binding = WebviewLayoutBinding.inflate(layoutInflater)
 
@@ -28,6 +32,9 @@ class WebViewActivity : AppCompatActivity() {
         webSettings.javaScriptEnabled = true
 
         setContentView(binding.root)
+
+        setNavigationBarContrastNotEnforced()
+        applyInsetsPaddingIgnoreBottom(binding.root)
     }
 
 }

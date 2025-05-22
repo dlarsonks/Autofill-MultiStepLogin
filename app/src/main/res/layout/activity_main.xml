@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ScrollView
+        android:id="@+id/rootContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -118,6 +119,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="@string/webview">
+
+                </com.test.autofill.multisteplogin.navigation.NavigationItem>
+
+                <com.test.autofill.multisteplogin.navigation.NavigationItem
+                    android:id="@+id/passwordNotVisibleToggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="@string/password_not_visible">
 
                 </com.test.autofill.multisteplogin.navigation.NavigationItem>
 

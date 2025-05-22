@@ -1,24 +1,38 @@
 package com.test.autofill.multisteplogin
 
+import android.content.Context
 import android.os.Bundle
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import com.test.autofill.databinding.ActivityMainBinding
 import com.test.autofill.multisteplogin.otp.OtpActivity
 import com.test.autofill.multisteplogin.otp.OtpMultiActivity
 import com.test.autofill.multisteplogin.otp.OtpUsernamePasswordActivity
+import com.test.autofill.multisteplogin.passwordnotvisible.PasswordNotVisibleActivity
 import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
+import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
+import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 import com.test.autofill.multisteplogin.webview.WebViewActivity
 
 /**
  * Created by dlarson on 11/1/17.
  */
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
 
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        setNavigationBarContrastNotEnforced()
+        applyInsetsPaddingIgnoreBottom(binding.root)
 
         binding.basicMultiStepLogin.setNavigationButtonClickListener { launchBasicMultiStepLogin() }
         binding.passwordOnlyLogin.setNavigationButtonClickListener { launchPasswordOnlyLogin() }
@@ -33,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         binding.twoFactorCodeMulti.setNavigationButtonClickListener { launchTwoFactorCodeScreenMulti() }
         binding.otpUsernamePassword.setNavigationButtonClickListener { launchOtpUsernamePasswordScreen() }
         binding.webview.setNavigationButtonClickListener { launchWebViewScreen() }
+        binding.passwordNotVisibleToggle.setNavigationButtonClickListener {
+            passwordNotVisibleToggleScreen()
+        }
     }
 
     private fun launchBasicMultiStepLogin() {
@@ -135,6 +152,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchWebViewScreen() {
         val intent = WebViewActivity.createIntent(this)
+        startActivity(intent)
+    }
+
+    private fun passwordNotVisibleToggleScreen() {
+        val intent = PasswordNotVisibleActivity.createIntent(this)
         startActivity(intent)
     }
 
