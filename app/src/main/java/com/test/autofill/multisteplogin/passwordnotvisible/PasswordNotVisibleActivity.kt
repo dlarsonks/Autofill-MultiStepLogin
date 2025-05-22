@@ -36,6 +36,7 @@ class PasswordNotVisibleActivity : AppCompatActivity() {
         booleanPreferencesKey("PASSWORD_VISIBLE_TOGGLE_SETTING")
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        logD { "onCreate: " }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 

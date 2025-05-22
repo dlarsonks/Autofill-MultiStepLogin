@@ -14,6 +14,7 @@ import com.test.autofill.multisteplogin.address.AddressFragment
 import com.test.autofill.multisteplogin.paymentcard.PaymentCardEnteredCallback
 import com.test.autofill.multisteplogin.paymentcard.PaymentCardFragment
 import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
+import com.test.autofill.multisteplogin.util.logD
 import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 
 /**
@@ -57,6 +58,7 @@ class MainProfileActivity : AppCompatActivity(),
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        logD { "onCreate: " }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
@@ -70,18 +72,22 @@ class MainProfileActivity : AppCompatActivity(),
 
         val profileScreen = getProfileScreen(extras) ?: error("no screen type found")
 
-        when (profileScreen) {
-            ProfileScreen.PaymentCard -> showPaymentCardScreen()
-            ProfileScreen.Address -> showAddressScreen()
+        if (savedInstanceState == null) {
+            when (profileScreen) {
+                ProfileScreen.PaymentCard -> showPaymentCardScreen()
+                ProfileScreen.Address -> showAddressScreen()
+            }
         }
     }
 
     private fun showAddressScreen() {
+        logD { "showAddressScreen: " }
         val fragment = AddressFragment.newInstance()
         showFragment(fragment, AddressFragment.TAG)
     }
 
     private fun showPaymentCardScreen() {
+        logD { "showPaymentCardScreen: " }
         val fragment = PaymentCardFragment.newInstance()
         showFragment(fragment, PaymentCardFragment.TAG)
     }

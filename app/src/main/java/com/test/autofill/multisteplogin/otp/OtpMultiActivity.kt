@@ -10,6 +10,7 @@ import com.test.autofill.BuildConfig.DEBUG
 import com.test.autofill.databinding.OtpMultiLayoutBinding
 import com.test.autofill.multisteplogin.DoneActivity
 import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
+import com.test.autofill.multisteplogin.util.logD
 import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 
 /**
@@ -25,6 +26,7 @@ class OtpMultiActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        logD { "onCreate: " }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 

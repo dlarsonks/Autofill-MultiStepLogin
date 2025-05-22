@@ -16,6 +16,7 @@ import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTo
 import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
 import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 import com.test.autofill.multisteplogin.webview.WebViewActivity
+import com.test.autofill.multisteplogin.util.logD
 
 /**
  * Created by dlarson on 11/1/17.
@@ -25,6 +26,7 @@ val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "se
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        logD { "onCreate: " }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 

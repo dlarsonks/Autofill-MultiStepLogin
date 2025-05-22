@@ -17,6 +17,7 @@ import com.test.autofill.multisteplogin.password.PasswordEnteredCallback
 import com.test.autofill.multisteplogin.username.UsernameEnteredCallback
 import com.test.autofill.multisteplogin.username.UsernameFragment
 import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
+import com.test.autofill.multisteplogin.util.logD
 import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 
 class MultiLoginActivity : AppCompatActivity(),
@@ -57,6 +58,7 @@ class MultiLoginActivity : AppCompatActivity(),
     private var showExtraScreenBeforeUsername: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        logD { "onCreate: " }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
@@ -75,21 +77,23 @@ class MultiLoginActivity : AppCompatActivity(),
             showExtraScreenBeforeUsername = extras.getBoolean(EXTRA_SCREEN_BEFORE_USERNAME, false)
         }
 
-        when {
-            showExtraScreenBeforeUsername -> showFirstAndLastNameScreen()
-            showUsernameScreen -> showUsernameScreen()
-            else -> showPasswordScreen()
+        if (savedInstanceState == null) {
+            when {
+                showExtraScreenBeforeUsername -> showFirstAndLastNameScreen()
+                showUsernameScreen -> showUsernameScreen()
+                else -> showPasswordScreen()
+            }
         }
     }
 
     private fun showUsernameScreen() {
-        if (DEBUG) Log.d(TAG, "showUsernameScreen: ")
+        logD { "showUsernameScreen: " }
         val fragment = UsernameFragment.newInstance()
         showFragment(fragment = fragment, tag = "UsernameFragment")
     }
 
     override fun usernameEntered() {
-        if (DEBUG) Log.d(TAG, "usernameEntered: ")
+        logD { "usernameEntered: " }
         if (showExtraScreenAfterUsername) {
             showFirstAndLastNameScreen()
         } else {
@@ -98,7 +102,7 @@ class MultiLoginActivity : AppCompatActivity(),
     }
 
     override fun passwordEntered() {
-        if (DEBUG) Log.d(TAG, "passwordEntered: ")
+        logD { "passwordEntered: " }
         if (showExtraScreenAfterPassword) {
             showFirstAndLastNameScreen()
         } else {
@@ -107,7 +111,7 @@ class MultiLoginActivity : AppCompatActivity(),
     }
 
     override fun firstAndLastNameEntered() {
-        if (DEBUG) Log.d(TAG, "firstAndLastNameEntered: ")
+        logD { "firstAndLastNameEntered: " }
         when {
             showExtraScreenBeforeUsername -> showUsernameScreen()
             showExtraScreenAfterUsername -> showPasswordScreen()
@@ -116,20 +120,20 @@ class MultiLoginActivity : AppCompatActivity(),
     }
 
     private fun showFirstAndLastNameScreen() {
-        if (DEBUG) Log.d(TAG, "showFirstAndLastNameScreen: ")
+        logD { "showFirstAndLastNameScreen: " }
         val fragment = FirstAndLastNameFragment.newInstance()
         showFragment(fragment = fragment, tag = "FirstAndLastNameFragment")
     }
 
     private fun showDoneScreen() {
-        if (DEBUG) Log.d(TAG, "showDoneScreen: ")
+        logD { "showDoneScreen: " }
         val intent = DoneActivity.createIntent(this)
         startActivity(intent)
         finish()
     }
 
     private fun showPasswordScreen() {
-        if (DEBUG) Log.d(TAG, "showPasswordScreen: ")
+        logD { "showPasswordScreen: " }
         val fragment = PasswordFragment.newInstance(numberOfPasswordFields)
         showFragment(fragment = fragment, tag = "PasswordFragment")
     }

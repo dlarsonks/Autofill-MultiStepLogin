@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.test.autofill.databinding.WebviewLayoutBinding
 import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
+import com.test.autofill.multisteplogin.util.logD
 import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 
 class WebViewActivity : AppCompatActivity() {
@@ -21,6 +22,7 @@ class WebViewActivity : AppCompatActivity() {
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
+        logD { "onCreate: " }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
