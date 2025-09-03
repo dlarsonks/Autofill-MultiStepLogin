@@ -13,53 +13,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.test.autofill.multisteplogin.navigation;
+package com.test.autofill.multisteplogin.navigation
 
-import android.content.Context;
-import android.content.res.TypedArray;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.TextView;
+import android.content.Context
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.widget.FrameLayout
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import com.test.autofill.R
 
-import com.test.autofill.R;
+class NavigationItem @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr, defStyleRes) {
+    private val mCardView: CardView
 
-public class NavigationItem extends FrameLayout {
-    private final CardView mCardView;
+    init {
+        val typedArray = context.obtainStyledAttributes(
+            attrs, R.styleable.NavigationItem,
+            defStyleAttr, defStyleRes
+        )
+        val labelText = typedArray.getString(R.styleable.NavigationItem_labelText)
+        typedArray.recycle()
+        val rootView = LayoutInflater.from(context).inflate(R.layout.navigation_item, this)
+        val buttonLabel = rootView.findViewById<TextView>(R.id.buttonLabel)
+        buttonLabel.text = labelText
 
-    public NavigationItem(Context context) {
-        this(context, null);
+        mCardView = rootView.findViewById<CardView>(R.id.cardView)
     }
 
-    public NavigationItem(Context context, AttributeSet attrs) {
-        this(context, attrs, 0);
-    }
-
-    public NavigationItem(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
-    }
-
-    public NavigationItem(@NonNull Context context,
-                          @Nullable AttributeSet attrs,
-                          int defStyleAttr,
-                          int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NavigationItem,
-                defStyleAttr, defStyleRes);
-        String labelText = typedArray.getString(R.styleable.NavigationItem_labelText);
-        typedArray.recycle();
-        View rootView = LayoutInflater.from(context).inflate(R.layout.navigation_item, this);
-        TextView buttonLabel = rootView.findViewById(R.id.buttonLabel);
-        buttonLabel.setText(labelText);
-
-        mCardView = rootView.findViewById(R.id.cardView);
-    }
-
-    public void setNavigationButtonClickListener(@Nullable OnClickListener l) {
-        mCardView.setOnClickListener(l);
+    fun setNavigationButtonClickListener(l: OnClickListener?) {
+        mCardView.setOnClickListener(l)
     }
 }
