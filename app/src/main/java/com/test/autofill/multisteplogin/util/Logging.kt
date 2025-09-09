@@ -11,6 +11,10 @@ inline fun Any.logD(message: () -> String) {
     if (DEBUG) Log.d(this::class.java.simpleName, message())
 }
 
+inline fun Any.logE(message: () -> String) {
+    if (DEBUG) Log.e(this::class.java.simpleName, message())
+}
+
 inline fun logD(tag: String, message: () -> String) {
     if (DEBUG) Log.d(tag, message())
 }

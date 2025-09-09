@@ -1,19 +1,30 @@
 [versions]
 
 activityKtx = "1.10.1"
+androidx-activity-compose = "1.10.1"
 appcompat = "1.7.1"
+browserVersion = "1.9.0"
 cardview = "1.0.0"
+androidxComposeBom = "2025.08.01"
 constraintlayout = "2.2.1"
 gradle = "8.12.2"
-material = "1.12.0"
+kotlin = "2.2.10"
+material = "1.13.0"
 fragmentKtx = "1.8.9"
 datastorePreferences = "1.1.7"
 commonsText = "1.14.0"
 
 [libraries]
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+androidx-browser = { group = "androidx.browser", name = "browser", version.ref = "browserVersion" }
 androidx-cardview = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-material3 = { module = "androidx.compose.material3:material3" }
+androidx-compose-ui = { module = "androidx.compose.ui:ui" }
+androidx-compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
+androidx-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 google-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtx" }
@@ -21,3 +32,5 @@ androidx-datastore-preferences = { group = "androidx.datastore", name = "datasto
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 apache-commons-text = { group = "org.apache.commons", name = "commons-text", version.ref = "commonsText" }
 
+[plugins]
+compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

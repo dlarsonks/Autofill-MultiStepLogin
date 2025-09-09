@@ -8,6 +8,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.test.autofill.databinding.ActivityMainBinding
+import com.test.autofill.multisteplogin.customtab.CustomTabActivity
 import com.test.autofill.multisteplogin.otp.OtpActivity
 import com.test.autofill.multisteplogin.otp.OtpMultiActivity
 import com.test.autofill.multisteplogin.otp.OtpUsernamePasswordActivity
@@ -51,6 +52,9 @@ class MainActivity : AppCompatActivity() {
         binding.webview.setNavigationButtonClickListener { launchWebViewScreen() }
         binding.passwordNotVisibleToggle.setNavigationButtonClickListener {
             passwordNotVisibleToggleScreen()
+        }
+        binding.customTab.setNavigationButtonClickListener {
+            launchCustomTabScreen()
         }
     }
 
@@ -159,6 +163,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun passwordNotVisibleToggleScreen() {
         val intent = PasswordNotVisibleActivity.createIntent(this)
+        startActivity(intent)
+    }
+
+    private fun launchCustomTabScreen() {
+        val intent = CustomTabActivity.createIntent(this)
         startActivity(intent)
     }
 

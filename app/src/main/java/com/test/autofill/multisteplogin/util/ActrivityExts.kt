@@ -2,6 +2,7 @@ package com.test.autofill.multisteplogin.util
 
 import android.os.Build
 import android.view.View
+import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -14,8 +15,13 @@ fun applyInsetsPaddingIgnoreBottom(viewRoot: View) {
     }
 }
 
-
 fun AppCompatActivity.setNavigationBarContrastNotEnforced() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        window.isNavigationBarContrastEnforced = false
+    }
+}
+
+fun ComponentActivity.setNavigationBarContrastNotEnforced() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
         window.isNavigationBarContrastEnforced = false
     }

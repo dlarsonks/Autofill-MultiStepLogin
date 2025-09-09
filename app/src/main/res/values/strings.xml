@@ -42,5 +42,8 @@
     <string name="webview">WebView</string>
     <string name="password_visible">Password Visible</string>
     <string name="password_not_visible">Password Not Visible</string>
-    <string name="otp_code">Enter One-Time Passcode</string>"
+    <string name="otp_code">Enter One-Time Passcode</string>
+    <string name="custom_tab">Custom Tab</string>
+    <string name="URL">URL</string>
+    <string name="url_for_custom_tab">URL to open in a Custom Tab</string>
 </resources>

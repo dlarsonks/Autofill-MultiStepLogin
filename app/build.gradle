@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
 
 android {
-    compileSdkVersion 35
+    compileSdkVersion 36
     defaultConfig {
         applicationId "com.test.autofill"
         minSdkVersion 28
-        targetSdkVersion 35
+        targetSdkVersion 36
         versionCode 1
         versionName "1.0"
     }
@@ -27,6 +27,7 @@ android {
     buildFeatures {
         viewBinding true
         dataBinding true
+        compose true
     }
 
     namespace 'com.test.autofill'
@@ -36,7 +37,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "21"
+        jvmTarget = JavaVersion.VERSION_21.toString()
     }
 
 }
@@ -47,9 +48,19 @@ dependencies {
     implementation libs.apache.commons.text
     implementation libs.androidx.activity.ktx
     implementation libs.androidx.appcompat
+    implementation libs.androidx.browser
     implementation libs.androidx.cardview
     implementation libs.androidx.constraintlayout
     implementation libs.androidx.datastore.preferences
     implementation libs.androidx.fragment.ktx
     implementation libs.google.material
+
+    var composeBom = platform(libs.androidx.compose.bom)
+    implementation(composeBom)
+    implementation libs.androidx.activity.compose
+    implementation libs.androidx.compose.material3
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.compose.ui.tooling
+    implementation libs.androidx.compose.ui.tooling.preview
+
 }
