@@ -2,50 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Add the viewport meta tag for responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Autofill Demo</title>
-    <style>
-        body {
-          font-family: Arial, sans-serif;
-          background-color: #f2f2f2;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100vh;
-          margin: 0;
-        }
-        .container {
-          background: white;
-          padding: 2rem;
-          border-radius: 8px;
-          box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-          width: 300px;
-          text-align: center;
-        }
-        .container h2 {
-          margin-bottom: 1.5rem;
-        }
-        .button-link {
-          display: block;
-          padding: 0.75rem;
-          border: none;
-          background-color: #3F51B5;
-          color: white;
-          font-size: 1rem;
-          border-radius: 4px;
-          cursor: pointer;
-          text-decoration: none;
-          margin-top: 1rem;
-        }
-        .button-link:hover {
-          background-color: #303F9F;
-        }
-    </style>
+    <!-- Link to the shared stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
     <h2>Autofill Demo</h2>
     <p>Select an action to continue.</p>
-    <a href="login_form.html" class="button-link">Go to Login Form</a>
+    <!-- Use the common 'button' class -->
+    <a href="login_form.html" class="button">Go to Login Form</a>
 </div>
 </body>
 </html>
