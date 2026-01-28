@@ -1,18 +1,18 @@
 [versions]
 
-activityKtx = "1.10.1"
-androidx-activity-compose = "1.10.1"
+activityKtx = "1.12.2"
+androidx-activity-compose = "1.12.2"
 appcompat = "1.7.1"
 browserVersion = "1.9.0"
 cardview = "1.0.0"
-androidxComposeBom = "2025.08.01"
+androidxComposeBom = "2026.01.00"
 constraintlayout = "2.2.1"
-gradle = "8.12.2"
-kotlin = "2.2.10"
+gradle = "8.13.2"
+kotlin = "2.3.0"
 material = "1.13.0"
 fragmentKtx = "1.8.9"
-datastorePreferences = "1.1.7"
-commonsText = "1.14.0"
+datastorePreferences = "1.2.0"
+commonsText = "1.15.0"
 
 [libraries]
 androidx-activity-ktx = { group = "androidx.activity", name = "activity-ktx", version.ref = "activityKtx" }
