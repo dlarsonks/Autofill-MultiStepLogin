@@ -4,26 +4,18 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.Fragment
-import com.test.autofill.BuildConfig.DEBUG
 import com.test.autofill.multisteplogin.password.PasswordFragment
 import com.test.autofill.R
 import com.test.autofill.databinding.FragmentLayoutBinding
-import com.test.autofill.multisteplogin.first_last_name.FirstAndLastNameEnteredCallback
 import com.test.autofill.multisteplogin.first_last_name.FirstAndLastNameFragment
-import com.test.autofill.multisteplogin.password.PasswordEnteredCallback
-import com.test.autofill.multisteplogin.username.UsernameEnteredCallback
 import com.test.autofill.multisteplogin.username.UsernameFragment
 import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
 import com.test.autofill.multisteplogin.util.logD
 import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 
-class MultiLoginActivity : AppCompatActivity(),
-        UsernameEnteredCallback,
-        PasswordEnteredCallback,
-        FirstAndLastNameEnteredCallback {
+class MultiLoginActivity : AppCompatActivity() {
 
     companion object {
         val TAG = MultiLoginActivity::class.simpleName
@@ -35,12 +27,13 @@ class MultiLoginActivity : AppCompatActivity(),
         private const val EXTRA_SCREEN_BEFORE_USERNAME = "extra_screen_before_username_extra"
 
         fun createIntent(
-                context: Context,
-                showUsernameScreen: Boolean = true,
-                numberOfPasswordFields: Int,
-                showExtraScreenAfterUsername: Boolean,
-                showExtraScreenAfterPassword: Boolean,
-                showExtraScreenBeforeUsername: Boolean): Intent {
+            context: Context,
+            showUsernameScreen: Boolean = true,
+            numberOfPasswordFields: Int,
+            showExtraScreenAfterUsername: Boolean,
+            showExtraScreenAfterPassword: Boolean,
+            showExtraScreenBeforeUsername: Boolean
+        ): Intent {
             return Intent(context, MultiLoginActivity::class.java).apply {
                 putExtra(SHOW_USERNAME_SCREEN, showUsernameScreen)
                 putExtra(NUMBER_OF_PASSWORD_FIELDS, numberOfPasswordFields)
@@ -84,39 +77,49 @@ class MultiLoginActivity : AppCompatActivity(),
                 else -> showPasswordScreen()
             }
         }
+
+        // Set up fragment result listeners
+        supportFragmentManager.setFragmentResultListener(
+            UsernameFragment.REQUEST_KEY_USERNAME_ENTERED,
+            this
+        ) { _, _ ->
+            logD { "usernameEntered: " }
+            if (showExtraScreenAfterUsername) {
+                showFirstAndLastNameScreen()
+            } else {
+                showPasswordScreen()
+            }
+        }
+
+        supportFragmentManager.setFragmentResultListener(
+            PasswordFragment.REQUEST_KEY_PASSWORD_ENTERED,
+            this
+        ) { _, _ ->
+            logD { "passwordEntered: " }
+            if (showExtraScreenAfterPassword) {
+                showFirstAndLastNameScreen()
+            } else {
+                showDoneScreen()
+            }
+        }
+
+        supportFragmentManager.setFragmentResultListener(
+            FirstAndLastNameFragment.REQUEST_KEY_NAME_ENTERED,
+            this
+        ) { _, _ ->
+            logD { "firstAndLastNameEntered: " }
+            when {
+                showExtraScreenBeforeUsername -> showUsernameScreen()
+                showExtraScreenAfterUsername -> showPasswordScreen()
+                else -> showDoneScreen()
+            }
+        }
     }
 
     private fun showUsernameScreen() {
         logD { "showUsernameScreen: " }
         val fragment = UsernameFragment.newInstance()
         showFragment(fragment = fragment, tag = "UsernameFragment")
-    }
-
-    override fun usernameEntered() {
-        logD { "usernameEntered: " }
-        if (showExtraScreenAfterUsername) {
-            showFirstAndLastNameScreen()
-        } else {
-            showPasswordScreen()
-        }
-    }
-
-    override fun passwordEntered() {
-        logD { "passwordEntered: " }
-        if (showExtraScreenAfterPassword) {
-            showFirstAndLastNameScreen()
-        } else {
-            showDoneScreen()
-        }
-    }
-
-    override fun firstAndLastNameEntered() {
-        logD { "firstAndLastNameEntered: " }
-        when {
-            showExtraScreenBeforeUsername -> showUsernameScreen()
-            showExtraScreenAfterUsername -> showPasswordScreen()
-            else -> showDoneScreen()
-        }
     }
 
     private fun showFirstAndLastNameScreen() {

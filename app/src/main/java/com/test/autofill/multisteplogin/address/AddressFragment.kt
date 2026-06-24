@@ -1,6 +1,5 @@
 package com.test.autofill.multisteplogin.address
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,8 +18,6 @@ class AddressFragment : Fragment() {
         }
     }
 
-    private lateinit var addressEnteredCallback: AddressEnteredCallback
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = AddressLayoutBinding.inflate(inflater)
 
@@ -29,14 +26,6 @@ class AddressFragment : Fragment() {
     }
 
     private fun submitClicked() {
-        addressEnteredCallback.addressEntered()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        require (context is AddressEnteredCallback) {
-            "$context must implement ${AddressEnteredCallback::class.java}"
-        }
-        addressEnteredCallback = context
+        parentFragmentManager.setFragmentResult("addressEntered", Bundle())
     }
 }

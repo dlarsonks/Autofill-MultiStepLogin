@@ -9,9 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.test.autofill.R
 import com.test.autofill.databinding.FragmentLayoutBinding
-import com.test.autofill.multisteplogin.address.AddressEnteredCallback
 import com.test.autofill.multisteplogin.address.AddressFragment
-import com.test.autofill.multisteplogin.paymentcard.PaymentCardEnteredCallback
 import com.test.autofill.multisteplogin.paymentcard.PaymentCardFragment
 import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
 import com.test.autofill.multisteplogin.util.logD
@@ -20,9 +18,7 @@ import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 /**
  * Created by dlarson at 1/21/21
  */
-class MainProfileActivity : AppCompatActivity(),
-        PaymentCardEnteredCallback,
-        AddressEnteredCallback {
+class MainProfileActivity : AppCompatActivity() {
 
     companion object {
 
@@ -78,6 +74,14 @@ class MainProfileActivity : AppCompatActivity(),
                 ProfileScreen.Address -> showAddressScreen()
             }
         }
+
+        supportFragmentManager.setFragmentResultListener("paymentCardEntered", this) { _, _ ->
+            showDoneScreen()
+        }
+
+        supportFragmentManager.setFragmentResultListener("addressEntered", this) { _, _ ->
+            showDoneScreen()
+        }
     }
 
     private fun showAddressScreen() {
@@ -99,17 +103,10 @@ class MainProfileActivity : AppCompatActivity(),
         transaction.commit()
     }
 
-    override fun paymentCardEntered() {
-        showDoneScreen()
-    }
-
     private fun showDoneScreen() {
         val intent = DoneActivity.createIntent(this)
         startActivity(intent)
         finish()
     }
 
-    override fun addressEntered() {
-        showDoneScreen()
-    }
 }

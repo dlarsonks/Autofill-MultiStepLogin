@@ -1,6 +1,5 @@
 package com.test.autofill.multisteplogin.username
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.util.Log
@@ -16,13 +15,12 @@ import com.test.autofill.databinding.UsernameLayoutBinding
 class UsernameFragment :  Fragment() {
     companion object {
         val TAG = UsernameFragment::class.simpleName
+        const val REQUEST_KEY_USERNAME_ENTERED = "request_key_username_entered"
 
         fun newInstance() : Fragment {
             return UsernameFragment()
         }
     }
-
-    private lateinit var usernameEnteredCallback: UsernameEnteredCallback
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -35,13 +33,6 @@ class UsernameFragment :  Fragment() {
 
     private fun submitClicked() {
         if (DEBUG) Log.d(TAG, "submitClicked: ")
-        usernameEnteredCallback.usernameEntered()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is UsernameEnteredCallback) {
-            usernameEnteredCallback = context
-        }
+        parentFragmentManager.setFragmentResult(REQUEST_KEY_USERNAME_ENTERED, Bundle())
     }
 }

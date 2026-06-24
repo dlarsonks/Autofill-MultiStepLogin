@@ -4,18 +4,14 @@ package com.test.autofill.multisteplogin.compose
 
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Shapes
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-private val shapes: Shapes
-    @Composable
-    get() = MaterialTheme.shapes.copy(
-        large = CircleShape,
-    )
 @Composable
 fun AutofillMultistepTheme(content: @Composable () -> Unit) {
+
+    val shapes = MaterialTheme.shapes.copy(large = CircleShape)
 
     val colorScheme = lightColorScheme(
         primary = Color(0xFF3F51B5),

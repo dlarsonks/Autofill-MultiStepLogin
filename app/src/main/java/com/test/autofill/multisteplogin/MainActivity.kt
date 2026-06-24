@@ -2,20 +2,19 @@ package com.test.autofill.multisteplogin
 
 import android.content.Context
 import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
-import com.test.autofill.databinding.ActivityMainBinding
+import com.test.autofill.multisteplogin.compose.AutofillMultistepTheme
 import com.test.autofill.multisteplogin.customtab.CustomTabActivity
 import com.test.autofill.multisteplogin.otp.OtpActivity
 import com.test.autofill.multisteplogin.otp.OtpMultiActivity
 import com.test.autofill.multisteplogin.otp.OtpUsernamePasswordActivity
 import com.test.autofill.multisteplogin.passwordnotvisible.PasswordNotVisibleActivity
 import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
-import com.test.autofill.multisteplogin.util.applyInsetsPaddingIgnoreBottom
-import com.test.autofill.multisteplogin.util.setNavigationBarContrastNotEnforced
 import com.test.autofill.multisteplogin.webview.WebViewActivity
 import com.test.autofill.multisteplogin.util.logD
 
@@ -24,37 +23,37 @@ import com.test.autofill.multisteplogin.util.logD
  */
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         logD { "onCreate: " }
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        setNavigationBarContrastNotEnforced()
-        applyInsetsPaddingIgnoreBottom(binding.root)
-
-        binding.basicMultiStepLogin.setNavigationButtonClickListener { launchBasicMultiStepLogin() }
-        binding.passwordOnlyLogin.setNavigationButtonClickListener { launchPasswordOnlyLogin() }
-        binding.multiStepLoginWithTwoPasswordFields.setNavigationButtonClickListener { launchMultiStepLoginWithTwoPasswordFields() }
-        binding.multiStepLoginWithExtraScreenAfterUsername.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenAfterUsername() }
-        binding.multiStepLoginWithExtraScreenAfterPassword.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenAfterPassword() }
-        binding.multiStepLoginWithExtraScreenBeforeUsername.setNavigationButtonClickListener { launchMultiStepLoginWithExtraScreenBeforeUsername() }
-        binding.usernameAndPasswordOnSameScreen.setNavigationButtonClickListener { launchUsernameAndPasswordOnSameScreen() }
-        binding.paymentCard.setNavigationButtonClickListener { launchPaymentCardScreen() }
-        binding.address.setNavigationButtonClickListener { launchAddressScreen() }
-        binding.twoFactorCode.setNavigationButtonClickListener { launchTwoFactorCodeScreen() }
-        binding.twoFactorCodeMulti.setNavigationButtonClickListener { launchTwoFactorCodeScreenMulti() }
-        binding.otpUsernamePassword.setNavigationButtonClickListener { launchOtpUsernamePasswordScreen() }
-        binding.webview.setNavigationButtonClickListener { launchWebViewScreen() }
-        binding.passwordNotVisibleToggle.setNavigationButtonClickListener {
-            passwordNotVisibleToggleScreen()
+        setContent {
+            AutofillMultistepTheme {
+                MainScreen(onNavClick = ::onNavItemClicked)
+            }
         }
-        binding.customTab.setNavigationButtonClickListener {
-            launchCustomTabScreen()
+    }
+
+    private fun onNavItemClicked(navItem: NavItem) {
+        when (navItem) {
+            NavItem.BASIC_MULTI_STEP_LOGIN -> launchBasicMultiStepLogin()
+            NavItem.PASSWORD_ONLY_LOGIN -> launchPasswordOnlyLogin()
+            NavItem.TWO_PASSWORD_FIELDS -> launchMultiStepLoginWithTwoPasswordFields()
+            NavItem.EXTRA_SCREEN_AFTER_USERNAME -> launchMultiStepLoginWithExtraScreenAfterUsername()
+            NavItem.EXTRA_SCREEN_AFTER_PASSWORD -> launchMultiStepLoginWithExtraScreenAfterPassword()
+            NavItem.EXTRA_SCREEN_BEFORE_USERNAME -> launchMultiStepLoginWithExtraScreenBeforeUsername()
+            NavItem.USERNAME_PASSWORD_SAME_SCREEN -> launchUsernameAndPasswordOnSameScreen()
+            NavItem.PAYMENT_CARD -> launchPaymentCardScreen()
+            NavItem.ADDRESS -> launchAddressScreen()
+            NavItem.TWO_FACTOR_CODE -> launchTwoFactorCodeScreen()
+            NavItem.TWO_FACTOR_CODE_MULTI -> launchTwoFactorCodeScreenMulti()
+            NavItem.OTP_USERNAME_PASSWORD -> launchOtpUsernamePasswordScreen()
+            NavItem.WEBVIEW -> launchWebViewScreen()
+            NavItem.PASSWORD_NOT_VISIBLE -> passwordNotVisibleToggleScreen()
+            NavItem.CUSTOM_TAB -> launchCustomTabScreen()
         }
     }
 

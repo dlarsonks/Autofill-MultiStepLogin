@@ -1,6 +1,5 @@
 package com.test.autofill.multisteplogin.paymentcard
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,8 +18,6 @@ class PaymentCardFragment : Fragment() {
         }
     }
 
-    private lateinit var paymentCardEnteredCallback: PaymentCardEnteredCallback
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = PaymentCardLayoutBinding.inflate(inflater)
 
@@ -29,14 +26,7 @@ class PaymentCardFragment : Fragment() {
     }
 
     private fun submitClicked() {
-        paymentCardEnteredCallback.paymentCardEntered()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        require (context is PaymentCardEnteredCallback) {
-            "$context must implement ${PaymentCardEnteredCallback::class.java}"
-        }
-        paymentCardEnteredCallback = context
+//        requireActivity().setFragmentResult("paymentCardEntered", Bundle())
+        parentFragmentManager.setFragmentResult("paymentCardEntered", Bundle())
     }
 }

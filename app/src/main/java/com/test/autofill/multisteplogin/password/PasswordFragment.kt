@@ -1,6 +1,5 @@
 package com.test.autofill.multisteplogin.password
 
-import android.content.Context
 import android.os.Bundle
 import androidx.constraintlayout.widget.ConstraintLayout
 import android.util.Log
@@ -22,6 +21,7 @@ import com.test.autofill.databinding.PasswordLayoutBinding
 class PasswordFragment : Fragment() {
     companion object {
         val TAG = PasswordFragment::class.simpleName
+        const val REQUEST_KEY_PASSWORD_ENTERED = "request_key_password_entered"
 
         private const val number_of_password_fields = "number_of_password_fields_extra"
         fun newInstance(numberOfPasswordFields: Int) : Fragment {
@@ -33,7 +33,6 @@ class PasswordFragment : Fragment() {
         }
     }
 
-    private lateinit var passwordEnteredCallback: PasswordEnteredCallback
     private var numberOfPasswordFields: Int = 1
 
     private lateinit var constraintLayout: ConstraintLayout
@@ -91,7 +90,9 @@ class PasswordFragment : Fragment() {
         if (DEBUG) Log.d(TAG, "submitClicked: ")
 
         when (validatePassword()) {
-            PasswordValidationResult.Success -> passwordEnteredCallback.passwordEntered()
+            PasswordValidationResult.Success -> {
+                parentFragmentManager.setFragmentResult(REQUEST_KEY_PASSWORD_ENTERED, Bundle())
+            }
             PasswordValidationResult.PasswordNotLongEnough -> displayPasswordNotLongEnough()
             PasswordValidationResult.PasswordsDoNotMatch -> displayPasswordsDoNotMatch()
         }
@@ -124,11 +125,5 @@ class PasswordFragment : Fragment() {
         return PasswordValidationResult.Success
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if(context is PasswordEnteredCallback) {
-            passwordEnteredCallback = context
-        }
-    }
 }
 
