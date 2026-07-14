@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.webkit.WebSettings
 import android.webkit.WebViewClient
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,10 +27,12 @@ class WebViewActivity : AppCompatActivity() {
 
         val binding = WebviewLayoutBinding.inflate(layoutInflater)
 
-        binding.webview.loadUrl("https://facebook.com")
-        val webSettings: WebSettings = binding.webview.settings
-        binding.webview.webViewClient = WebViewClient()
-        webSettings.javaScriptEnabled = true
+        with(binding.webview) {
+            webViewClient = WebViewClient()
+            settings.javaScriptEnabled = true
+            settings.domStorageEnabled = true
+            loadUrl("https://www.facebook.com/")
+        }
 
         setContentView(binding.root)
 

@@ -39,6 +39,7 @@ enum class NavItem(val label: String) {
     WEBVIEW("WebView"),
     PASSWORD_NOT_VISIBLE("Password Not Visible"),
     CUSTOM_TAB("Custom Tab"),
+    MALICIOUS_WEBVIEW("Malicious WebView")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

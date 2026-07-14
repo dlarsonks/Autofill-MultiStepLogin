@@ -17,6 +17,7 @@ import com.test.autofill.multisteplogin.passwordnotvisible.PasswordNotVisibleAct
 import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
 import com.test.autofill.multisteplogin.webview.WebViewActivity
 import com.test.autofill.multisteplogin.util.logD
+import com.test.autofill.multisteplogin.webview.MaliciousWebViewActivity
 
 /**
  * Created by dlarson on 11/1/17.
@@ -54,6 +55,7 @@ class MainActivity : ComponentActivity() {
             NavItem.WEBVIEW -> launchWebViewScreen()
             NavItem.PASSWORD_NOT_VISIBLE -> passwordNotVisibleToggleScreen()
             NavItem.CUSTOM_TAB -> launchCustomTabScreen()
+            NavItem.MALICIOUS_WEBVIEW -> launchMaliciousWebView()
         }
     }
 
@@ -167,6 +169,11 @@ class MainActivity : ComponentActivity() {
 
     private fun launchCustomTabScreen() {
         val intent = CustomTabActivity.createIntent(this)
+        startActivity(intent)
+    }
+
+    private fun launchMaliciousWebView() {
+        val intent = MaliciousWebViewActivity.createIntent(this)
         startActivity(intent)
     }
 

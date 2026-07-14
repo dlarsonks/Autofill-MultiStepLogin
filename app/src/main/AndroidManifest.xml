@@ -43,6 +43,7 @@
             android:name=".multisteplogin.customtab.CustomTabActivity"
             android:exported="false"
             android:theme="@style/AppTheme.M3" />
+        <activity android:name="com.test.autofill.multisteplogin.webview.MaliciousWebViewActivity" />
 
     </application>
 
