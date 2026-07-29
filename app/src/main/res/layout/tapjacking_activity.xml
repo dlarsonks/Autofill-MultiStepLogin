@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    the WebView is a real view here (a sibling of the ComposeView) rather than a Compose
+    AndroidView. AndroidComposeView represents an interop AndroidView as a single leaf in its
+    autofill virtual structure and never descends into the WebView's onProvideAutofillVirtualStructure,
+    so a Compose-hosted WebView reports no webDomain/hints to Autofill. keeping it native lets the
+    platform traverse it, exactly like MaliciousWebViewActivity.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/controlsCompose"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <EditText
+        android:id="@+id/domainInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:hint="@string/tapjacking_domain_hint"
+        android:importantForAutofill="no"
+        android:inputType="textUri" />
+
+    <Button
+        android:id="@+id/loadButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:text="@string/tapjacking_load_button" />
+
+    <WebView
+        android:id="@+id/triggerWebview"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:importantForAutofill="yes" />
+
+</LinearLayout>

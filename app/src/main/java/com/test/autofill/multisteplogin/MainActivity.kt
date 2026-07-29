@@ -14,6 +14,8 @@ import com.test.autofill.multisteplogin.otp.OtpActivity
 import com.test.autofill.multisteplogin.otp.OtpMultiActivity
 import com.test.autofill.multisteplogin.otp.OtpUsernamePasswordActivity
 import com.test.autofill.multisteplogin.passwordnotvisible.PasswordNotVisibleActivity
+import com.test.autofill.multisteplogin.tapjacking.basic.TapJackingActivity
+import com.test.autofill.multisteplogin.tapjacking.service.TapJackingOverlayServiceActivity
 import com.test.autofill.multisteplogin.username_and_password.UsernamePasswordTogetherActivity
 import com.test.autofill.multisteplogin.webview.WebViewActivity
 import com.test.autofill.multisteplogin.util.logD
@@ -56,6 +58,8 @@ class MainActivity : ComponentActivity() {
             NavItem.PASSWORD_NOT_VISIBLE -> passwordNotVisibleToggleScreen()
             NavItem.CUSTOM_TAB -> launchCustomTabScreen()
             NavItem.MALICIOUS_WEBVIEW -> launchMaliciousWebView()
+            NavItem.TAP_JACKING -> launchTapJacking()
+            NavItem.TAP_JACKING_SERVICE -> launchTapJackingServiceActivity()
         }
     }
 
@@ -174,6 +178,16 @@ class MainActivity : ComponentActivity() {
 
     private fun launchMaliciousWebView() {
         val intent = MaliciousWebViewActivity.createIntent(this)
+        startActivity(intent)
+    }
+
+    private fun launchTapJacking() {
+        val intent = TapJackingActivity.createIntent(this)
+        startActivity(intent)
+    }
+
+    private fun launchTapJackingServiceActivity() {
+        val intent = TapJackingOverlayServiceActivity.createIntent(this)
         startActivity(intent)
     }
 

@@ -39,7 +39,9 @@ enum class NavItem(val label: String) {
     WEBVIEW("WebView"),
     PASSWORD_NOT_VISIBLE("Password Not Visible"),
     CUSTOM_TAB("Custom Tab"),
-    MALICIOUS_WEBVIEW("Malicious WebView")
+    MALICIOUS_WEBVIEW("Malicious WebView"),
+    TAP_JACKING("Tap-jacking / Overlay Test"),
+    TAP_JACKING_SERVICE("Tap-jacking Service"),
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

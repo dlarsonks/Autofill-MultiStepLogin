@@ -4,9 +4,17 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- lets the tap-jacking test screen draw a TYPE_APPLICATION_OVERLAY over other apps -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
     <!-- so we can query for browsers that support custom tabs -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
+
+    <!-- for tap-jacking service -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
 
     <application
         android:allowBackup="false"
@@ -44,6 +52,14 @@
             android:exported="false"
             android:theme="@style/AppTheme.M3" />
         <activity android:name="com.test.autofill.multisteplogin.webview.MaliciousWebViewActivity" />
+        <activity android:name=".multisteplogin.tapjacking.basic.TapJackingActivity" />
+        <activity
+            android:name="com.test.autofill.multisteplogin.tapjacking.service.TapJackingOverlayServiceActivity" />
+
+        <service
+            android:name=".multisteplogin.tapjacking.service.TapJackingOverlayService"
+            android:foregroundServiceType="specialUse"
+            android:exported="true" />
 
     </application>
 

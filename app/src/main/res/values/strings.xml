@@ -46,4 +46,10 @@
     <string name="custom_tab">Custom Tab</string>
     <string name="URL">URL</string>
     <string name="url_for_custom_tab">URL to open in a Custom Tab</string>
+    <string name="tapjacking_decoy_banner">🎉 You won a $500 gift card!</string>
+    <string name="tapjacking_decoy_prompt">Congratulations! Tap the button below to claim your reward.</string>
+    <string name="tapjacking_decoy_button">Continue</string>
+    <string name="tapjacking_domain_hint">Reported web domain</string>
+    <string name="tapjacking_load_button">Load login form</string>
+    <string name="untrusted_service_overlay">Untrusted Overlay from Service</string>
 </resources>
