@@ -10,7 +10,6 @@ import android.graphics.Color
 import android.graphics.PixelFormat
 import android.os.Build
 import android.os.IBinder
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
@@ -19,6 +18,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import com.test.autofill.R
+import com.test.autofill.multisteplogin.util.logD
+import com.test.autofill.multisteplogin.util.logE
+import com.test.autofill.multisteplogin.util.logW
 import kotlin.math.roundToInt
 
 internal object TapJackingOverlayServiceStatus {
@@ -109,7 +111,6 @@ internal object TapJackingOverlayOpacity {
  */
 class TapJackingOverlayService : Service() {
     companion object {
-        private val TAG = TapJackingOverlayService::class.java.simpleName
 
         private const val CHANNEL_ID = "tj_overlay"
         private const val DEFAULT_HEIGHT_DP = 100
@@ -222,16 +223,14 @@ class TapJackingOverlayService : Service() {
                 opacity = opacity,
                 verticalPosition = verticalPosition ?: 0f,
             )
-            Log.i(
-                TAG, ("addOverlay: overlay added sdk=" + Build.VERSION.SDK_INT
-                        + " pkg=" + getPackageName()
-                        + " heightPx=" + heightPx
-                        + " yPx=" + yPx
-                        + " opacity=" + opacity
-                        + " gravity=" + (if (alignBottom) "bottom" else "top"))
-            )
+
+            logD { "addOverlay: overlay added " +
+                    "sdk=${Build.VERSION.SDK_INT}, " +
+                    "pkg=$packageName heightPx=$heightPx, " +
+                    "yPx=$yPx opacity=$opacity, " +
+                    "gravity=${if (alignBottom) "bottom" else "top"}" }
         } catch (e: Exception) {
-            Log.e(TAG, "addOverlay: overlay add failed", e)
+            logE(e) { "addOverlay: overlay add failed" }
         }
     }
 
@@ -241,9 +240,9 @@ class TapJackingOverlayService : Service() {
         }
         try {
             windowManager()!!.removeView(overlay)
-            Log.i(TAG, "removeOverlay: overlay removed")
+            logD { "removeOverlay: overlay removed" }
         } catch (e: Exception) {
-            Log.w(TAG, "removeOverlay: overlay remove failed", e)
+            logW(e) { "removeOverlay: overlay remove failed" }
         }
         overlay = null
     }

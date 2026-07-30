@@ -18,3 +18,15 @@ inline fun Any.logE(message: () -> String) {
 inline fun logD(tag: String, message: () -> String) {
     if (DEBUG) Log.d(tag, message())
 }
+
+inline fun Any.logW(message: () -> String) {
+    if (DEBUG) Log.w(this::class.java.simpleName, message())
+}
+
+inline fun Any.logW(e: Throwable, message: () -> String) {
+    if (DEBUG) Log.w(this::class.java.simpleName, message(), e)
+}
+
+inline fun Any.logE(e: Throwable, message: () -> String) {
+    if (DEBUG) Log.e(this::class.java.simpleName, message(), e)
+}
