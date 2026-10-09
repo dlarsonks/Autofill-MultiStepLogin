@@ -46,7 +46,7 @@ class MaliciousWebViewActivity : AppCompatActivity() {
 }
 
 object MaliciousLoginPage {
-    const val reportedDomain = "https://facebook.com"
+    const val reportedDomain = "https://m.facebook.com"
     const val sourceUrl = "https://attacker.com/"
     val domainSummary = "Real URL: $sourceUrl\nReported URL: $reportedDomain"
 
