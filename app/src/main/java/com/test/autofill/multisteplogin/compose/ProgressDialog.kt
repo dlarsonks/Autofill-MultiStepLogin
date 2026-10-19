@@ -16,16 +16,15 @@ import androidx.compose.ui.window.DialogProperties
 @Composable
 fun ProgressDialog(
     onDismissRequest: () -> Unit = { },
-    properties: DialogProperties = DialogProperties()
+    properties: DialogProperties = DialogProperties(
+        dismissOnBackPress = false,
+        dismissOnClickOutside = false
+    )
 ) {
     Dialog(
-        onDismissRequest = { /* Handle dismiss if allowed */ },
-        properties = DialogProperties(
-            dismissOnBackPress = false, // Prevents closing with back button
-            dismissOnClickOutside = false // Prevents closing when tapping background
-        )
+        onDismissRequest = onDismissRequest,
+        properties = properties,
     ) {
-        // Box container to style the dialog window
         Box(
             modifier = Modifier
                 .size(100.dp)
