@@ -9,6 +9,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.test.autofill.multisteplogin.compose.AutofillMultistepTheme
+import com.test.autofill.multisteplogin.credentialmanager.GetPasswordActivity
 import com.test.autofill.multisteplogin.customtab.CustomTabActivity
 import com.test.autofill.multisteplogin.otp.OtpActivity
 import com.test.autofill.multisteplogin.otp.OtpMultiActivity
@@ -60,6 +61,7 @@ class MainActivity : ComponentActivity() {
             NavItem.MALICIOUS_WEBVIEW -> launchMaliciousWebView()
             NavItem.TAP_JACKING -> launchTapJacking()
             NavItem.TAP_JACKING_SERVICE -> launchTapJackingServiceActivity()
+            NavItem.CREDENTIAL_MANAGER_GET_PASSWORD -> launchCredentialManagerGetPassword()
         }
     }
 
@@ -188,6 +190,11 @@ class MainActivity : ComponentActivity() {
 
     private fun launchTapJackingServiceActivity() {
         val intent = TapJackingOverlayServiceActivity.createIntent(this)
+        startActivity(intent)
+    }
+
+    private fun launchCredentialManagerGetPassword() {
+        val intent = GetPasswordActivity.intent(this)
         startActivity(intent)
     }
 

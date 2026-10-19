@@ -1,7 +1,11 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
-apply plugin: 'com.android.application'
-apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+plugins {
+    id 'com.android.application'
+    id 'com.google.dagger.hilt.android'
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.compose)
+}
 
 android {
     compileSdkVersion 37
@@ -11,6 +15,7 @@ android {
         targetSdkVersion 37
         versionCode 1
         versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -49,9 +54,13 @@ dependencies {
     implementation libs.androidx.browser
     implementation libs.androidx.cardview
     implementation libs.androidx.constraintlayout
+    implementation libs.credentials
     implementation libs.androidx.datastore.preferences
     implementation libs.androidx.fragment.ktx
     implementation libs.google.material
+
+    implementation libs.hilt.android
+    ksp libs.hilt.android.compiler
 
     var composeBom = platform(libs.androidx.compose.bom)
     implementation(composeBom)
@@ -62,4 +71,7 @@ dependencies {
     implementation libs.androidx.compose.ui.tooling.preview
 
     testImplementation libs.junit
+    androidTestImplementation libs.androidx.test.core
+    androidTestImplementation libs.androidx.test.ext.junit
+    androidTestImplementation libs.androidx.test.runner
 }

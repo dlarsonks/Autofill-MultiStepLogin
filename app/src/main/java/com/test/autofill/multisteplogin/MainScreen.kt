@@ -42,6 +42,7 @@ enum class NavItem(val label: String) {
     MALICIOUS_WEBVIEW("Malicious WebView"),
     TAP_JACKING("Tap-jacking / Overlay Test"),
     TAP_JACKING_SERVICE("Tap-jacking Service"),
+    CREDENTIAL_MANAGER_GET_PASSWORD("Credential Manager - Get Password"),
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

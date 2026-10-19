@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '2.4.0'
+    ext.kotlin_version = libs.versions.kotlin.get()
     repositories {
         google()
         mavenCentral()
@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath libs.gradle
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath libs.gradle.hilt
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -22,5 +23,6 @@ buildscript {
 }
 
 plugins {
+    alias(libs.plugins.ksp) apply false
     alias(libs.plugins.compose) apply false
 }
